@@ -1,0 +1,4 @@
+streamlit
+google-genai
+flask
+tzdata   # time-zone data for Windows; harmless elsewhere
