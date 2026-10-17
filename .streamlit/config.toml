@@ -1,0 +1,10 @@
+[client]
+# Hide the built-in "FrontPage / Results / Search" sidebar; the nav bar under the banner replaces it
+showSidebarNavigation = false
+# Hide the "Deploy" button
+toolbarMode = "minimal"
+
+[theme]
+base = "dark"
+# Dark navy so the moment before the background photo loads blends in instead of flashing
+backgroundColor = "#0e1a2b"
