@@ -8,8 +8,12 @@ from zoneinfo import ZoneInfo
 import streamlit as st
 from google import genai
 from google.genai import types
+from pydantic import BaseModel
 
 ROOT = Path(__file__).parent
+
+# Browser-tab icon for every page: st.set_page_config(..., page_icon=PAGE_ICON)
+PAGE_ICON = str(ROOT / "gator_icon.png")
 
 # Keep the model names in ONE place so app.py / web_app.py / utils.py never drift apart.
 # Flash-Lite goes first: Python already works out open/closed times, so Gemini only has to
@@ -42,6 +46,16 @@ def img_to_base64(path) -> str:
 def load_spots():
     with open(ROOT / "foodspots.json") as f:
         return json.load(f)
+
+def get_image(spot: dict) -> str:
+    """Path to the spot's photo (the "image" field in foodspots.json), or the gator if it's missing."""
+    rel = spot.get("image")
+    if not rel:  # results saved before images existed: look the spot up in the current JSON
+        rel = next((s.get("image") for s in load_spots() if s["id"] == spot.get("id")), None)
+    if rel and (ROOT / rel).exists():
+        return str(ROOT / rel)
+    return str(ROOT / "gator_chef.png")
+
 
 @st.cache_resource
 def get_client():
@@ -157,7 +171,8 @@ def open_status(spot: dict, now: datetime | None = None) -> tuple[bool, str]:
 
 
 def set_background():
-    encoded = img_to_base64(ROOT / "Uf_Reitz_Picture.jpg")
+    # Small web-sized copy: this image is embedded in every page, so its size = page load time
+    encoded = img_to_base64(ROOT / "Uf_Reitz_Picture_web.jpg")
 
     st.markdown(
         f"""
@@ -205,7 +220,7 @@ def set_background():
 
 
 def show_banner():
-    chef_gator = img_to_base64(ROOT / "gator_chef.png")
+    chef_gator = img_to_base64(ROOT / "gator_logo.png")  # logo with transparent background, 160px tall
 
     st.markdown(
         f"""
@@ -313,6 +328,34 @@ _STOPWORDS = {"near", "need", "want", "with", "from", "between", "class", "class
               "minutes", "under", "something", "food", "place", "places", "good", "have"}
 
 
+class Pick(BaseModel):
+    """One recommendation from Gemini: which spot, and why it fits the user's request."""
+    id: str
+    reasons: list[str]
+
+
+_SPEED_LABELS = {
+    "grab_and_go": "Grab-and-go, so you're in and out in minutes",
+    "quick": "Quick service, usually 10-20 minutes",
+    "sit_down": "Sit-down spot if you have time to relax",
+}
+
+
+def _rule_reasons(spot: dict, words: set, now: datetime) -> list[str]:
+    """Plain-English reasons built from the data, used when Gemini is unavailable."""
+    reasons = []
+    hits = [t for t in spot["tags"] if any(w in t for w in words)]
+    if hits:
+        reasons.append("Matches what you asked for: " + ", ".join(t.replace("_", " ") for t in hits[:3]))
+    is_open, status = open_status(spot, now)
+    if is_open:
+        reasons.append(status)
+    if spot["price_range"] == "$":
+        reasons.append("Budget-friendly ($)")
+    reasons.append(_SPEED_LABELS.get(spot["speed"], spot["speed"].replace("_", " ")))
+    return reasons[:3]
+
+
 def _keyword_fallback(query: str, spots: list, now: datetime) -> list:
     """Used only when Gemini is unreachable: rank OPEN spots by simple keyword overlap."""
     words = {w.strip(",.!?$").lower() for w in query.split()}
@@ -323,11 +366,15 @@ def _keyword_fallback(query: str, spots: list, now: datetime) -> list:
         return sum(w in text for w in words)
 
     open_spots = [s for s in spots if open_status(s, now)[0]] or spots
-    return sorted(open_spots, key=score, reverse=True)[:5]
+    top = sorted(open_spots, key=score, reverse=True)[:5]
+    return [{**s, "reasons": _rule_reasons(s, words, now)} for s in top]
 
 
 def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str | None]:
     """Return (matched_spots, error_message_or_None).
+
+    Each matched spot is a copy of its foodspots.json entry plus a "reasons" list:
+    short bullet points explaining why it fits the user's request.
 
     The error is returned instead of shown with st.error() because Search.py calls
     st.switch_page() right after this, which wiped the error box before you could read it.
@@ -349,7 +396,14 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
     BUDGET/SPEED: "$" is cheapest. If the user is short on time, prefer grab_and_go or quick.
 
     Select up to 5 best matching restaurants, best match first.
-    Return ONLY a JSON array of their IDs. Example: ["uf-010", "uf-011"]
+
+    For each pick, give 2-3 short "reasons" explaining why it fits THIS user's request.
+    - Tie each reason to something the user said (time, budget, diet, location, group, vibe).
+    - Use only facts from the restaurant data (price, speed, landmark, tags, open status).
+      Never invent menu items, prices in dollars, ratings, or walking times you can't support.
+    - Keep each reason under 15 words, casual and friendly, no ending period.
+    Example: {{"id": "uf-005", "reasons": ["Right at Plaza of the Americas, steps from Turlington",
+              "Fully vegan and under $10", "Grab-and-go, fits your 15-minute window"]}}
 
     RESTAURANTS:
     {spots_for_prompt(spots, now)}
@@ -361,12 +415,16 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
             system_prompt,
             models=models,
             response_mime_type="application/json",
-            response_schema=list[str],  # forces a plain list of ID strings
+            response_schema=list[Pick],  # forces [{"id": ..., "reasons": [...]}, ...]
         )
-        selected_ids = response.parsed if response.parsed is not None else json.loads(response.text)
+        picks = response.parsed
+        if picks is None:  # older SDKs: parse the JSON text ourselves
+            picks = [Pick(**p) for p in json.loads(response.text)]
 
         by_id = {s["id"]: s for s in spots}
-        matched = [by_id[i] for i in selected_ids if i in by_id]  # keep Gemini's ranking order
+        # Copy each spot (so the cached database isn't modified) and attach Gemini's reasons.
+        # Keeps Gemini's ranking order.
+        matched = [{**by_id[p.id], "reasons": p.reasons} for p in picks if p.id in by_id]
         if matched:
             return matched, None
         return _keyword_fallback(query, spots, now), "Gemini didn't find a match, so these are the closest keyword matches."
