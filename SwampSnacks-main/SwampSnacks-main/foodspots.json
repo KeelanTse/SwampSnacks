@@ -8,7 +8,7 @@
     "tags": [
       "chinese",
       "fast_food",
-      "gator_dining",
+      "florida_fresh_dining",
       "on_campus",
       "vegetarian_options"
     ],
@@ -36,7 +36,7 @@
       "hot_dogs",
       "milkshakes",
       "fast_food",
-      "gator_dining",
+      "florida_fresh_dining",
       "on_campus",
       "late_night"
     ],
@@ -64,7 +64,7 @@
       "middle_eastern",
       "bowls",
       "salads",
-      "gator_dining",
+      "florida_fresh_dining",
       "on_campus",
       "vegetarian_options"
     ],
@@ -121,7 +121,7 @@
       "vegan_options",
       "vegetarian_options",
       "gluten_free_options",
-      "gator_dining",
+      "florida_fresh_dining",
       "on_campus"
     ],
     "hours": {
@@ -133,7 +133,7 @@
       "sat": "10:00-21:00",
       "sun": "10:00-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Gator+Corner+Dining+Center+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Food+Hall+at+Gator+Corner+University+of+Florida+Gainesville+FL",
     "speed": "quick",
     "image": "compressedImages/6. Gator Dining.jpg"
   },
@@ -149,7 +149,7 @@
       "vegan_options",
       "vegetarian_options",
       "gluten_free_options",
-      "gator_dining",
+      "florida_fresh_dining",
       "on_campus"
     ],
     "hours": {
@@ -161,7 +161,7 @@
       "sat": "10:00-21:00",
       "sun": "10:00-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Broward+Dining+Center+University+of+Florida+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Eatery+at+Broward+University+of+Florida+Gainesville+FL",
     "speed": "quick",
     "image": "compressedImages/7. Broward Dining.jpg"
   },
@@ -175,7 +175,7 @@
       "chicken",
       "fast_food",
       "breakfast",
-      "gator_dining",
+      "florida_fresh_dining",
       "on_campus"
     ],
     "hours": {
@@ -189,7 +189,7 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chick-fil-A+The+Hub+University+of+Florida+Gainesville+FL",
     "speed": "grab_and_go",
-    "image": "compressedImages/1. Chick fi La.jpg"
+    "image": "compressedImages/Chick-fil-A The Hub (photo).jpg"
   },
   {
     "id": "uf-009",
@@ -202,7 +202,7 @@
       "pastries",
       "breakfast",
       "study_spot",
-      "gator_dining",
+      "florida_fresh_dining",
       "on_campus",
       "vegan_options"
     ],
@@ -217,7 +217,7 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Starbucks+Marston+Science+Library+Gainesville+FL",
     "speed": "grab_and_go",
-    "image": "compressedImages/8. Starbucks.jpg"
+    "image": "compressedImages/Starbucks Marston (photo).jpg"
   },
   {
     "id": "uf-010",
@@ -245,7 +245,7 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Piesanos+Stone+Fired+Pizza+1250+W+University+Ave+Gainesville+FL",
     "speed": "sit_down",
-    "image": "compressedImages/9. Piezanos.jpg"
+    "image": "compressedImages/Piesanos (photo).jpg"
   },
   {
     "id": "uf-011",
@@ -299,13 +299,13 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Tea+Moment+W+University+Ave+Gainesville+FL",
     "speed": "grab_and_go",
-    "image": "compressedImages/11. Tea Moment.jpg"
+    "image": "compressedImages/Tea Moment (photo).jpg"
   },
   {
     "id": "uf-013",
     "name": "The Swamp Restaurant",
     "zone": "Midtown",
-    "nearest_landmark": "University Ave & SW 17th St",
+    "nearest_landmark": "1104 SW 2nd Ave, behind Midtown",
     "price_range": "$$",
     "tags": [
       "american",
@@ -384,7 +384,7 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Playa+Bowls+W+University+Ave+Gainesville+FL",
     "speed": "grab_and_go",
-    "image": "compressedImages/14. Playa Bowls.jpg"
+    "image": "compressedImages/Playa Bowls (photo).jpg"
   },
   {
     "id": "uf-016",
@@ -523,7 +523,7 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chipotle+W+University+Ave+Gainesville+FL",
     "speed": "quick",
-    "image": "compressedImages/19. Chipotle.jpg"
+    "image": "compressedImages/Chipotle (photo).jpg"
   },
   {
     "id": "uf-021",
@@ -547,7 +547,7 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Raising+Cane%27s+W+University+Ave+Gainesville+FL",
     "speed": "grab_and_go",
-    "image": "compressedImages/20. Raisin Canes.jpg"
+    "image": "compressedImages/Raising Canes (photo).jpg"
   },
   {
     "id": "uf-022",
@@ -573,7 +573,7 @@
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Jimmy+John%27s+W+University+Ave+Gainesville+FL",
     "speed": "grab_and_go",
-    "image": "compressedImages/21. Jimmy Johns.jpg"
+    "image": "compressedImages/Jimmy Johns (photo).jpg"
   },
   {
     "id": "uf-023",
@@ -608,7 +608,7 @@
     "id": "uf-024",
     "name": "Karma Cream",
     "zone": "Midtown",
-    "nearest_landmark": "University Ave & NW 20th St",
+    "nearest_landmark": "607 W University Ave (near NW 6th St)",
     "price_range": "$",
     "tags": [
       "ice_cream",
@@ -627,7 +627,7 @@
       "sat": "09:00-23:00",
       "sun": "10:00-22:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Karma+Cream+W+University+Ave+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Karma+Cream+607+W+University+Ave+Gainesville+FL",
     "speed": "grab_and_go",
     "image": "compressedImages/23. Karma Cream.jpg"
   },
@@ -660,8 +660,8 @@
   {
     "id": "uf-026",
     "name": "Reggae Shack Cafe",
-    "zone": "SW 13th St",
-    "nearest_landmark": "SW 13th St south of campus",
+    "zone": "Midtown",
+    "nearest_landmark": "619 W University Ave (near NW 6th St)",
     "price_range": "$$",
     "tags": [
       "jamaican",
@@ -679,7 +679,7 @@
       "sat": "12:00-21:00",
       "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Reggae+Shack+Cafe+SW+13th+St+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Reggae+Shack+Cafe+619+W+University+Ave+Gainesville+FL",
     "speed": "quick",
     "image": "compressedImages/25. Reggae Shack Cafe.jpg"
   },
@@ -687,7 +687,7 @@
     "id": "uf-027",
     "name": "Mi Apa Latin Cafe",
     "zone": "SW 34th St",
-    "nearest_landmark": "University Ave & SW 34th St",
+    "nearest_landmark": "114 SW 34th St, just south of University Ave",
     "price_range": "$",
     "tags": [
       "cuban",
@@ -706,7 +706,7 @@
       "sat": "08:00-16:00",
       "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mi+Apa+Latin+Cafe+SW+34th+St+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mi+Apa+Latin+Cafe+114+SW+34th+St+Gainesville+FL",
     "speed": "quick",
     "image": "compressedImages/26. Mi Apa Latin Cafe.jpg"
   },
@@ -726,13 +726,13 @@
       "vegetarian_options"
     ],
     "hours": {
-      "mon": "11:00-22:00",
-      "tue": "11:00-22:00",
-      "wed": "11:00-22:00",
-      "thu": "11:00-22:00",
-      "fri": "11:00-23:00",
-      "sat": "11:00-23:00",
-      "sun": "11:00-22:00"
+      "mon": "11:00-21:30",
+      "tue": "11:00-21:30",
+      "wed": "11:00-21:30",
+      "thu": "11:00-21:30",
+      "fri": "11:00-22:30",
+      "sat": "11:00-22:30",
+      "sun": "11:00-21:30"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chuy%27s+Archer+Rd+Gainesville+FL",
     "speed": "sit_down",
@@ -880,33 +880,6 @@
     "image": "compressedImages/32. 4th Ave. Food park.jpg"
   },
   {
-    "id": "uf-034",
-    "name": "Crane Ramen",
-    "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
-    "price_range": "$$",
-    "tags": [
-      "japanese",
-      "ramen",
-      "noodles",
-      "vegan_options",
-      "vegetarian_options",
-      "date_night"
-    ],
-    "hours": {
-      "mon": "17:00-22:00",
-      "tue": "17:00-22:00",
-      "wed": "17:00-22:00",
-      "thu": "17:00-22:00",
-      "fri": "17:00-22:00",
-      "sat": "12:00-22:00",
-      "sun": "12:00-21:00"
-    },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Crane+Ramen+SW+1st+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/33. Crane Ramen.jpg"
-  },
-  {
     "id": "uf-035",
     "name": "Dragonfly Sushi & Sake Co.",
     "zone": "Downtown",
@@ -1046,33 +1019,6 @@
     "image": "compressedImages/38. Emiliano's Cafe.jpg"
   },
   {
-    "id": "uf-040",
-    "name": "Paramount Grill",
-    "zone": "Downtown",
-    "nearest_landmark": "University Ave & SW 1st St",
-    "price_range": "$$$",
-    "tags": [
-      "fine_dining",
-      "new_american",
-      "wine",
-      "date_night",
-      "parents_visiting",
-      "reservations_recommended"
-    ],
-    "hours": {
-      "mon": "17:00-22:00",
-      "tue": "17:00-22:00",
-      "wed": "17:00-22:00",
-      "thu": "17:00-22:00",
-      "fri": "17:00-22:00",
-      "sat": "17:00-22:00",
-      "sun": "10:30-14:00"
-    },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Paramount+Grill+W+University+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/39. Paramount grill.jpg"
-  },
-  {
     "id": "uf-041",
     "name": "Liquid Ginger",
     "zone": "Downtown",
@@ -1130,8 +1076,8 @@
   {
     "id": "uf-043",
     "name": "Saigon Legend",
-    "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "zone": "Midtown",
+    "nearest_landmark": "1228 W University Ave, across from campus",
     "price_range": "$$",
     "tags": [
       "vietnamese",
@@ -1149,23 +1095,24 @@
       "sat": "12:00-21:30",
       "sun": "12:00-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Saigon+Legend+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Saigon+Legend+1228+W+University+Ave+Gainesville+FL",
     "speed": "sit_down",
     "image": "compressedImages/42. Saigon Legend.jpg"
   },
   {
     "id": "uf-044",
     "name": "Cymplify",
-    "zone": "Downtown",
-    "nearest_landmark": "Depot Park",
-    "price_range": "$$",
+    "zone": "NW Gainesville",
+    "nearest_landmark": "5404 NW 8th Ave (10 min drive)",
+    "price_range": "$",
     "tags": [
-      "vegan",
-      "plant_based",
+      "coffee",
       "cafe",
-      "bowls",
-      "gluten_free_options",
-      "healthy"
+      "ice_cream",
+      "dessert",
+      "market",
+      "study_spot",
+      "vegan_options"
     ],
     "hours": {
       "mon": "11:00-20:00",
@@ -1176,7 +1123,7 @@
       "sat": "10:00-20:00",
       "sun": "10:00-15:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Cymplify+Gainesville+vegan+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Cymplify+5404+NW+8th+Ave+Gainesville+FL",
     "speed": "quick",
     "image": "compressedImages/43. Cymplify.jpg"
   },
@@ -1267,8 +1214,8 @@
   {
     "id": "uf-048",
     "name": "Mildred's Big City Food",
-    "zone": "NW Gainesville",
-    "nearest_landmark": "NW 16th Ave",
+    "zone": "SW 34th St",
+    "nearest_landmark": "3445 W University Ave (near SW 34th St)",
     "price_range": "$$$",
     "tags": [
       "fine_dining",
@@ -1286,7 +1233,7 @@
       "sat": "17:00-21:30",
       "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mildred%27s+Big+City+Food+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mildred%27s+Big+City+Food+3445+W+University+Ave+Gainesville+FL",
     "speed": "sit_down",
     "image": "compressedImages/47. Mildred's Big City Food.jpg"
   },
@@ -1294,7 +1241,7 @@
     "id": "uf-049",
     "name": "Satchel's Pizza",
     "zone": "NE Gainesville",
-    "nearest_landmark": "NE Waldo Rd (10 min drive)",
+    "nearest_landmark": "1800 NE 23rd Ave (10 min drive)",
     "price_range": "$$",
     "tags": [
       "pizza",
@@ -1317,7 +1264,7 @@
       "sat": "11:00-22:00",
       "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Satchel%27s+Pizza+Gainesville+FL",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Satchel%27s+Pizza+1800+NE+23rd+Ave+Gainesville+FL",
     "speed": "sit_down",
     "image": "compressedImages/48. Stachel's Pizza.jpg"
   },

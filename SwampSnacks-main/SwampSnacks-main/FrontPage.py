@@ -53,11 +53,11 @@ st.markdown(
         </p>
         <div class="steps">
             <div class="step"><b>1. Describe your situation</b><br>
-                "20 minutes near Marston, under $10, vegetarian."</div>
+                "20 minutes near Marston, Under $10, Vegetarian."</div>
             <div class="step"><b>2. We match your constraints</b><br>
-                Location, price, speed, diet, and vibe, all at once.</div>
+                Location, Price, Speed, Diet, and Vibe, all at once.</div>
             <div class="step"><b>3. Pick a spot and go</b><br>
-                One tap opens directions in Google Maps.</div>
+                One click opens directions in Google Maps.</div>
         </div>
     </div>
     """,
