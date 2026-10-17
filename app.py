@@ -2,9 +2,7 @@
 import json
 from pathlib import Path
 
-from google.genai import types
-
-from utils import MODEL, get_client, now_at_uf
+from utils import MODEL, get_client, make_config, now_at_uf
 
 # foodspots.json is the single source of truth (database.py was an exact copy of it)
 with open(Path(__file__).parent / "foodspots.json") as f:
@@ -49,7 +47,7 @@ if __name__ == "__main__":
     # Created here (not at import time) so importing this file never hits the API
     chat = get_client().chats.create(
         model=MODEL,
-        config=types.GenerateContentConfig(system_instruction=system_prompt, temperature=0.0),
+        config=make_config(MODEL, system_prompt),  # same settings as the website
     )
     print("🐊 UF Campus Dining Chatbot is live! Type 'exit' or 'quit' to stop.\n")
     while True:

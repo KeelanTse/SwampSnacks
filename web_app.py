@@ -8,9 +8,8 @@ import json
 from pathlib import Path
 
 from flask import Flask, render_template, request, jsonify
-from google.genai import types
 
-from utils import MODEL, get_client, now_at_uf, open_status
+from utils import ask_gemini, now_at_uf, spots_for_prompt
 
 app = Flask(__name__)
 
@@ -41,27 +40,17 @@ def ask_gemini():
         return jsonify({"reply": "Missing location. Please allow location access and try again."}), 400
 
     now = now_at_uf()
-    spots = []
-    for s in SPOTS:
-        is_open, status = open_status(s, now)
-        spots.append({**s, "open_now": is_open, "status": status})
-
     user_message = (
         f"Current time in Gainesville: {now:%A, %I:%M %p}\n"
         f"User location: latitude {user_lat}, longitude {user_lon} (near the UF campus)\n\n"
         "Using ONLY the database below, find the 3 closest dining spots that are open now "
         "and give a brief recommendation for each.\n\n"
-        f"DATABASE:\n{json.dumps(spots)}"
+        f"DATABASE:\n{spots_for_prompt(SPOTS, now)}"  # trimmed: no weekly hours/links = faster
     )
 
     try:
-        # One independent request per click. The old shared `chat` object mixed every
-        # visitor's messages into one ever-growing conversation.
-        response = get_client().models.generate_content(
-            model=MODEL,
-            contents=user_message,
-            config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT, temperature=0.0),
-        )
+        # One independent request per click (low thinking, 12 s timeout, backup model).
+        response = ask_gemini(user_message, SYSTEM_PROMPT)
         return jsonify({"reply": response.text})
     except Exception as e:
         print(f"[SwampSnacks] Gemini error: {e!r}")

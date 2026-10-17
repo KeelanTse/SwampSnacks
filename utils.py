@@ -1,5 +1,6 @@
 import base64
 import json
+import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -10,9 +11,18 @@ from google.genai import types
 
 ROOT = Path(__file__).parent
 
-# gemini-1.5-flash has been shut down by Google, which is why every search errored.
-# Keep the model name in ONE place so app.py / web_app.py / utils.py never drift apart.
-MODEL = "gemini-3.8-flash"
+# Keep the model names in ONE place so app.py / web_app.py / utils.py never drift apart.
+# Flash-Lite goes first: Python already works out open/closed times, so Gemini only has to
+# match a request to a list of 50 spots, a small job that the fast model handles.
+# Run compare_models.py to check it against 3.8 Flash on real searches; swap these two lines if 3.8 wins.
+MODEL = "gemini-3.5-flash-lite"
+# Smarter but slower model, used only when MODEL errors, is overloaded (503) or times out.
+FALLBACK_MODEL = "gemini-3.8-flash"
+# gemini-3.8-flash "thinks" at medium by default, which adds seconds to every call.
+# Low is plenty for picking restaurants. (Models not listed here use their own default.)
+THINKING_LEVELS = {"gemini-3.8-flash": "low"}
+# Give up on a model after this long instead of letting the spinner hang. (milliseconds)
+TIMEOUT_MS = 12_000
 
 # Always use Gainesville time. datetime.now() alone uses the *server's* clock,
 # which is UTC on Streamlit Cloud (4-5 hours off).
@@ -23,18 +33,15 @@ except Exception:  # Windows without the `tzdata` package -> fall back to the co
 
 DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
-
 @st.cache_data
 def img_to_base64(path) -> str:
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-
 @st.cache_data
 def load_spots():
     with open(ROOT / "foodspots.json") as f:
         return json.load(f)
-
 
 @st.cache_resource
 def get_client():
@@ -46,7 +53,56 @@ def get_client():
             'No API_KEY found. Create .streamlit/secrets.toml next to FrontPage.py '
             'containing:  API_KEY = "your-gemini-key"'
         )
-    return genai.Client(api_key=api_key)
+    return genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=TIMEOUT_MS))
+
+
+def make_config(model: str, system_instruction: str, **config) -> types.GenerateContentConfig:
+    """Shared Gemini settings; adds the thinking level only for models that need one."""
+    if model in THINKING_LEVELS:
+        config["thinking_config"] = types.ThinkingConfig(thinking_level=THINKING_LEVELS[model])
+    return types.GenerateContentConfig(system_instruction=system_instruction, temperature=0.0, **config)
+
+
+def ask_gemini(contents: str, system_instruction: str, models=None, **config):
+    """Call MODEL; if it errors or times out (e.g. 503 high demand), retry once on FALLBACK_MODEL.
+
+    Prints how long each attempt took, so the terminal shows where the wait comes from.
+    `models` lets compare_models.py force one specific model.
+    """
+    last_error = None
+    for model in models or (MODEL, FALLBACK_MODEL):
+        start = time.perf_counter()
+        try:
+            response = get_client().models.generate_content(
+                model=model, contents=contents, config=make_config(model, system_instruction, **config)
+            )
+            print(f"[SwampSnacks] {model} answered in {time.perf_counter() - start:.1f}s")
+            return response
+        except RuntimeError:  # missing API key: switching models won't help
+            raise
+        except Exception as e:
+            print(f"[SwampSnacks] {model} failed after {time.perf_counter() - start:.1f}s: {e!r}")
+            last_error = e
+    raise last_error
+
+
+def spots_for_prompt(spots: list, now: datetime) -> str:
+    """Compact JSON of only the fields Gemini needs (no weekly hours or map links = fewer tokens)."""
+    rows = []
+    for s in spots:
+        is_open, status = open_status(s, now)
+        rows.append({
+            "id": s["id"],
+            "name": s["name"],
+            "zone": s["zone"],
+            "landmark": s["nearest_landmark"],
+            "price": s["price_range"],
+            "speed": s["speed"],
+            "tags": s["tags"],
+            "open_now": is_open,
+            "status": status,
+        })
+    return json.dumps(rows, separators=(",", ":"))
 
 
 # ---------- time-of-day helpers ----------
@@ -270,29 +326,13 @@ def _keyword_fallback(query: str, spots: list, now: datetime) -> list:
     return sorted(open_spots, key=score, reverse=True)[:5]
 
 
-def get_recommendations(query: str, spots: list) -> tuple[list, str | None]:
+def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str | None]:
     """Return (matched_spots, error_message_or_None).
 
     The error is returned instead of shown with st.error() because Search.py calls
     st.switch_page() right after this, which wiped the error box before you could read it.
     """
     now = now_at_uf()
-
-    # Give Gemini everything it needs to judge budget, speed, location AND time of day.
-    spots_summary = []
-    for s in spots:
-        is_open, status = open_status(s, now)
-        spots_summary.append({
-            "id": s["id"],
-            "name": s["name"],
-            "zone": s["zone"],
-            "landmark": s["nearest_landmark"],
-            "price": s["price_range"],
-            "speed": s["speed"],
-            "tags": s["tags"],
-            "open_now": is_open,
-            "status": status,
-        })
 
     system_prompt = f"""
     You are an expert UF campus dining assistant.
@@ -312,19 +352,16 @@ def get_recommendations(query: str, spots: list) -> tuple[list, str | None]:
     Return ONLY a JSON array of their IDs. Example: ["uf-010", "uf-011"]
 
     RESTAURANTS:
-    {json.dumps(spots_summary)}
+    {spots_for_prompt(spots, now)}
     """
 
     try:
-        response = get_client().models.generate_content(
-            model=MODEL,
-            contents=f"User Query: {query}",
-            config=types.GenerateContentConfig(
-                system_instruction=system_prompt,
-                temperature=0.0,
-                response_mime_type="application/json",
-                response_schema=list[str],  # forces a plain list of ID strings
-            ),
+        response = ask_gemini(
+            f"User Query: {query}",
+            system_prompt,
+            models=models,
+            response_mime_type="application/json",
+            response_schema=list[str],  # forces a plain list of ID strings
         )
         selected_ids = response.parsed if response.parsed is not None else json.loads(response.text)
 
