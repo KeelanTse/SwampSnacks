@@ -1,9 +1,10 @@
 import streamlit as st
-from utils import PAGE_ICON, set_background, show_banner
+from utils import PAGE_ICON, page_transition, set_background, show_banner
 
 st.set_page_config(page_title="SwampSnacks", page_icon=PAGE_ICON, layout="wide")
 set_background()
 show_banner()
+page_transition("Home")
 
 st.markdown(
     """

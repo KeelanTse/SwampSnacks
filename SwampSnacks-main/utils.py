@@ -1,5 +1,6 @@
 import base64
 import json
+import re
 import time
 from datetime import datetime
 from pathlib import Path
@@ -9,6 +10,8 @@ import streamlit as st
 from google import genai
 from google.genai import types
 from pydantic import BaseModel
+
+from walking import origin_description, walk_estimate
 
 ROOT = Path(__file__).parent
 
@@ -37,27 +40,42 @@ except Exception:  # Windows without the `tzdata` package -> fall back to the co
 
 DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
-@st.cache_data
+@st.cache_data(show_spinner=False)  # no "Running img_to_base64()" message on first load
 def img_to_base64(path) -> str:
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-@st.cache_data
+@st.cache_data(show_spinner=False)  # no "Running load_spots()" message on the first search
 def load_spots():
     with open(ROOT / "foodspots.json") as f:
         return json.load(f)
 
+DEFAULT_IMAGE = str(ROOT / "gator_logo.png")  # shown when a spot has no photo
+
+
 def get_image(spot: dict) -> str:
-    """Path to the spot's photo (the "image" field in foodspots.json), or the gator if it's missing."""
+    """Path to the spot's photo (the "image" field in foodspots.json), or the gator logo if it's missing."""
     rel = spot.get("image")
     if not rel:  # results saved before images existed: look the spot up in the current JSON
         rel = next((s.get("image") for s in load_spots() if s["id"] == spot.get("id")), None)
     if rel and (ROOT / rel).exists():
         return str(ROOT / rel)
-    return str(ROOT / "gator_chef.png")
+    return DEFAULT_IMAGE
 
 
-@st.cache_resource
+def show_spot_image(spot: dict):
+    """The photo on a result/review card. Spots without a photo get the gator logo on a light panel."""
+    path = get_image(spot)
+    # The "noimg_" key lets card_styles() show the logo whole instead of cropping it like a photo
+    box = st.container(key=f"noimg_{spot['id']}") if path == DEFAULT_IMAGE else st.container()
+    with box:
+        try:
+            st.image(path, width="stretch")
+        except Exception:  # older Streamlit versions
+            st.image(path, use_container_width=True)
+
+
+@st.cache_resource(show_spinner=False)  # no "Running get_client()" message on the first search
 def get_client():
     """Create the Gemini client once (not on every rerun), with a clear error if the key is missing."""
     try:
@@ -92,7 +110,7 @@ def ask_gemini(contents: str, system_instruction: str, models=None, **config):
             )
             print(f"[SwampSnacks] {model} answered in {time.perf_counter() - start:.1f}s")
             return response
-        except RuntimeError:  # missing API key: switching models won't help
+        except RuntimeError:
             raise
         except Exception as e:
             print(f"[SwampSnacks] {model} failed after {time.perf_counter() - start:.1f}s: {e!r}")
@@ -100,12 +118,21 @@ def ask_gemini(contents: str, system_instruction: str, models=None, **config):
     raise last_error
 
 
-def spots_for_prompt(spots: list, now: datetime) -> str:
-    """Compact JSON of only the fields Gemini needs (no weekly hours or map links = fewer tokens)."""
+def open_rank(spot: dict, now: datetime) -> int:
+    """Sort key: open spots first, then spots with unknown hours, then closed ones."""
+    is_open = open_status(spot, now)[0]
+    return 0 if is_open else (1 if is_open is None else 2)
+
+
+def spots_for_prompt(spots: list, now: datetime, origin: dict | None = None) -> str:
+    """Compact JSON of only the fields Gemini needs (no weekly hours or map links = fewer tokens).
+
+    With an origin ({"lat", "lng", ...} from walking.py), each spot also gets "walk_min".
+    """
     rows = []
     for s in spots:
         is_open, status = open_status(s, now)
-        rows.append({
+        row = {
             "id": s["id"],
             "name": s["name"],
             "zone": s["zone"],
@@ -115,7 +142,11 @@ def spots_for_prompt(spots: list, now: datetime) -> str:
             "tags": s["tags"],
             "open_now": is_open,
             "status": status,
-        })
+        }
+        est = walk_estimate(origin, s)
+        if est:
+            row["walk_min"] = est[0]
+        rows.append(row)
     return json.dumps(rows, separators=(",", ":"))
 
 
@@ -145,13 +176,15 @@ def open_status(spot: dict, now: datetime | None = None) -> tuple[bool, str]:
     Friday's hours are the ones that count.
     """
     now = now or now_at_uf()
+    if spot["hours"].get(DAYS[now.weekday()]) == "unknown":
+        return None, "Hours not listed · check before going"
     t = now.hour * 60 + now.minute
     today = DAYS[now.weekday()]
     yesterday = DAYS[(now.weekday() - 1) % 7]
 
     # 1) Still open from last night's late shift?
     prev = spot["hours"].get(yesterday, "closed")
-    if prev != "closed":
+    if prev not in ("closed", "unknown"):
         start, end = prev.split("-")
         if _minutes(end) <= _minutes(start) and t < _minutes(end):
             return True, f"Open now · until {pretty_time(end)}"
@@ -271,12 +304,57 @@ def show_banner():
         unsafe_allow_html=True,
     )
 
+def page_transition(page: str, view: str = ""):
+    """Smooth page changes: the page content fades and slides up, the banner and nav bar fade in.
+
+    Call it right after show_banner(). Each page gets its own animation name, so the animation
+    replays when you switch pages but not when you click things on the same page.
+    `view` replays just the content part for a different view of the same page
+    (the Reviews page uses it when you open a spot or go back to the list).
+    """
+    def css_name(text: str) -> str:
+        return re.sub(r"[^A-Za-z0-9_-]", "_", text)
+
+    chrome_anim = "pageFade_" + css_name(page)
+    content_anim = "pageIn_" + css_name(f"{page}_{view}")
+    top = ('[data-testid="stMainBlockContainer"] > [data-testid="stVerticalBlock"]',
+           '[data-testid="stMainBlockContainer"] > div > [data-testid="stVerticalBlock"]')  # newer / older Streamlit
+    # Page content = everything after the banner except the nav bar; "chrome" = the banner and nav bar
+    content = ", ".join(f"{t} > :has(.banner) ~ :not(:has(.st-key-navbar))" for t in top)
+    chrome = ", ".join(f"{t} > :has(.banner), {t} > :has(.st-key-navbar)" for t in top)
+    st.markdown(
+        f"""
+        <style>
+        @keyframes {content_anim} {{
+            from {{ opacity: 0; transform: translateY(14px); }}
+            to   {{ opacity: 1; transform: none; }}
+        }}
+        @keyframes {chrome_anim} {{
+            from {{ opacity: 0; }}
+            to   {{ opacity: 1; }}
+        }}
+        {content}, [data-testid="stBottom"] {{
+            animation: {content_anim} 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+        }}
+        {chrome} {{
+            animation: {chrome_anim} 0.3s ease-out both;
+        }}
+        @media (prefers-reduced-motion: reduce) {{
+            {content}, {chrome}, [data-testid="stBottom"] {{ animation: none; }}
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def show_nav(current: str):
-    """Navigation bar under the banner. `current` is "Home", "Search", or "Results"."""
+    """Navigation bar under the banner. `current` is "Home", "Search", "Results", or "Reviews"."""
     pages = [
         ("Home", "FrontPage.py", "🏠"),
         ("Search", "pages/Search.py", "🔍"),
         ("Results", "pages/Results.py", "🍽️"),
+        ("Reviews", "pages/Reviews.py", "⭐"),
     ]
 
     st.markdown(
@@ -315,11 +393,66 @@ def show_nav(current: str):
     )
 
     with st.container(key="navbar"):
-        cols = st.columns([3, 1, 1, 1, 3])
-        for col, (label, path, icon) in zip(cols[1:4], pages):
+        cols = st.columns([2.5, 1, 1, 1, 1, 2.5])
+        for col, (label, path, icon) in zip(cols[1:-1], pages):
             with col:
                 with st.container(key=f"nav_{label}"):
                     st.page_link(path, label=label, icon=icon, width="stretch")
+
+
+def card_styles():
+    """White, rounded card look for any st.container(key="card_...") (used on Results and Reviews)."""
+    st.markdown(
+        """
+        <style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        /* Same white panel as the home page so text is readable over the photo */
+        [class*="st-key-card_"] {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            max-width: 1100px;     /* narrower card, centered on the page */
+            margin: 0 auto;
+            color: #1a1a1a;
+            animation: fadeUp 0.5s ease-out both;
+        }
+        [class*="st-key-card_"] h4 { color: #0021A5 !important; }
+        [class*="st-key-card_"] li { margin-bottom: 0.15rem; }
+        [class*="st-key-card_"] li::marker { color: #FA4616; }
+        /* Restaurant photos: same size on every card, cropped to fill, rounded corners */
+        [class*="st-key-card_"] [data-testid="stFullScreenFrame"] > div:has([data-testid="stImage"]),
+        [class*="st-key-card_"] [data-testid="stImage"],
+        [class*="st-key-card_"] [data-testid="stImageContainer"] {
+            width: 100% !important;  /* let portrait and landscape photos fill the column the same way */
+        }
+        [class*="st-key-card_"] [data-testid="stImage"] img {
+            width: 100% !important;
+            height: 260px;
+            object-fit: cover;       /* crop to fill instead of stretching */
+            border-radius: 12px;
+        }
+        /* No photo: show the whole gator logo, centered on a light panel */
+        [class*="st-key-card_"] [class*="st-key-noimg_"] [data-testid="stImage"] img {
+            object-fit: contain;
+            padding: 45px;
+            background: #e8edf9;
+        }
+        /* Turn off the "expand image" (fullscreen) button on card photos */
+        [class*="st-key-card_"] [data-testid="stElementToolbar"],
+        [class*="st-key-card_"] [data-testid="StyledFullScreenButton"] {
+            display: none !important;
+        }
+        /* Buttons inside cards keep white text (the card's dark text color would hide it) */
+        [class*="st-key-card_"] .stButton > button[kind="secondary"],
+        [class*="st-key-card_"] .stButton > button[kind="secondary"] p { color: #fafafa !important; }
+        .stars { color: #FA4616; letter-spacing: 1px; }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 # ---------- recommendations ----------
@@ -356,21 +489,23 @@ def _rule_reasons(spot: dict, words: set, now: datetime) -> list[str]:
     return reasons[:3]
 
 
-def _keyword_fallback(query: str, spots: list, now: datetime) -> list:
-    """Used only when Gemini is unreachable: rank OPEN spots by simple keyword overlap."""
+def _keyword_fallback(query: str, spots: list, now: datetime, origin: dict | None = None) -> list:
+    """Used only when Gemini is unreachable: rank spots by simple keyword overlap, open ones first
+    (ties go to the shorter walk when we know where the user is)."""
     words = {w.strip(",.!?$").lower() for w in query.split()}
     words = {w for w in words if len(w) > 3 and w not in _STOPWORDS}
 
     def score(s):
         text = " ".join([s["name"], s["zone"], s["nearest_landmark"], *s["tags"]]).lower()
-        return sum(w in text for w in words)
+        est = walk_estimate(origin, s)
+        return sum(w in text for w in words), -(est[0] if est else 0)
 
-    open_spots = [s for s in spots if open_status(s, now)[0]] or spots
-    top = sorted(open_spots, key=score, reverse=True)[:5]
+    top = sorted(spots, key=score, reverse=True)[:5]
+    top.sort(key=lambda s: open_rank(s, now))  # open, then unknown hours, then closed
     return [{**s, "reasons": _rule_reasons(s, words, now)} for s in top]
 
 
-def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str | None]:
+def get_recommendations(query: str, spots: list, models=None, origin: dict | None = None) -> tuple[list, str | None]:
     """Return (matched_spots, error_message_or_None).
 
     Each matched spot is a copy of its foodspots.json entry plus a "reasons" list:
@@ -381,6 +516,14 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
     """
     now = now_at_uf()
 
+    if origin:
+        walking_rule = f"""
+    WALKING RULE: The user is at {origin_description(origin)}. Each restaurant has "walk_min", the
+    estimated minutes on foot from there. Prefer short walks, especially when the user is short on
+    time; if they give a time limit, the walk there and back has to fit inside it."""
+    else:
+        walking_rule = ""
+
     system_prompt = f"""
     You are an expert UF campus dining assistant.
     The user will provide a location, craving, or constraint.
@@ -389,9 +532,15 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
     CRITICAL GEOGRAPHY RULE: Use your general knowledge of the University of Florida campus to match
     user locations (like "Turlington", "Lib West", etc.) to the nearest landmarks in our database
     (like "Plaza of the Americas", "The Hub", "Marston", or "Midtown").
+    {walking_rule}
 
-    TIME RULE: Only pick spots where open_now is true, unless the user explicitly asks about a
-    different time. Use the time of day too (breakfast spots in the morning, late_night spots late).
+    TIME RULE: open_now null means hours are unknown; treat those as possibly open. Being closed does NOT disqualify a spot. Always include every strong match for what
+    the user asked (cuisine, food type, location), open or closed. The app shows closed spots at the
+    bottom with a red dot. Use the time of day too (breakfast in the morning, late_night spots late).
+
+    MATCHING: Match by meaning, not exact words. "Chinese" matches chinese; "coffee" matches coffee,
+    cafe, lattes; "dessert"/"sweet" matches desserts, sweets, ice_cream, pastries, milkshakes;
+    "cheap"/"broke" matches "$" and cheap_eats. Location matters: a spot near the user beats a far one.
 
     BUDGET/SPEED: "$" is cheapest. If the user is short on time, prefer grab_and_go or quick.
 
@@ -399,14 +548,15 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
 
     For each pick, give 2-3 short "reasons" explaining why it fits THIS user's request.
     - Tie each reason to something the user said (time, budget, diet, location, group, vibe).
-    - Use only facts from the restaurant data (price, speed, landmark, tags, open status).
-      Never invent menu items, prices in dollars, ratings, or walking times you can't support.
+    - Use only facts from the restaurant data (price, speed, landmark, tags, open status, walk_min).
+      Never invent menu items, prices in dollars, or ratings. Only mention a walking time if the
+      spot has walk_min, and use that number.
     - Keep each reason under 15 words, casual and friendly, no ending period.
     Example: {{"id": "uf-005", "reasons": ["Right at Plaza of the Americas, steps from Turlington",
               "Fully vegan and under $10", "Grab-and-go, fits your 15-minute window"]}}
 
     RESTAURANTS:
-    {spots_for_prompt(spots, now)}
+    {spots_for_prompt(spots, now, origin)}
     """
 
     try:
@@ -425,11 +575,12 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
         # Copy each spot (so the cached database isn't modified) and attach Gemini's reasons.
         # Keeps Gemini's ranking order.
         matched = [{**by_id[p.id], "reasons": p.reasons} for p in picks if p.id in by_id]
+        # Open spots first, closed ones at the bottom (Python's sort is stable, so Gemini's order is kept within each group)
+        matched.sort(key=lambda s: open_rank(s, now))
         if matched:
             return matched, None
-        return _keyword_fallback(query, spots, now), "Gemini didn't find a match, so these are the closest keyword matches."
+        return _keyword_fallback(query, spots, now, origin), "Gemini didn't find a match, so these are the closest keyword matches."
 
     except Exception as e:
         print(f"[SwampSnacks] Gemini error: {e!r}")  # full details in your terminal
-        return _keyword_fallback(query, spots, now), f"AI is unavailable right now ({e}). Showing keyword matches instead."
-
+        return _keyword_fallback(query, spots, now, origin), f"AI is unavailable right now ({e}). Showing keyword matches instead."
