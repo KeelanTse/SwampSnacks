@@ -1,46 +1,22 @@
 import html
 
 import streamlit as st
-from utils import PAGE_ICON, set_background, show_banner, show_nav, open_status, now_at_uf, get_image
+from reviews import all_reviews, stars, summarize
+from utils import PAGE_ICON, page_transition, card_styles, set_background, show_banner, show_nav, open_status, now_at_uf, show_spot_image
+from walking import current_origin, directions_url, origin_description, walk_label
 
 st.set_page_config(page_title="Results", page_icon=PAGE_ICON, layout="wide")
 set_background()
 show_banner()
+page_transition("Results")
 show_nav("Results")
+card_styles()  # white result cards (shared with the Reviews page)
 
 st.markdown(
     """
     <style>
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-    /* Result cards: same white panel as the home page so text is readable over the photo */
-    [class*="st-key-card_"] {
-        background: rgba(255, 255, 255, 0.92);
-        border-radius: 16px;
-        padding: 1rem 1.5rem;
-        max-width: 1100px;     /* narrower card, centered on the page */
-        margin: 0 auto;
-        color: #1a1a1a;
-        animation: fadeUp 0.5s ease-out both;
-    }
-    [class*="st-key-card_"] h4 { color: #0021A5 !important; }
-    [class*="st-key-card_"] li { margin-bottom: 0.15rem; }
-    [class*="st-key-card_"] li::marker { color: #FA4616; }
-    /* Restaurant photos: same size on every card, cropped to fill, rounded corners */
-    [class*="st-key-card_"] [data-testid="stFullScreenFrame"] > div:has([data-testid="stImage"]),
-    [class*="st-key-card_"] [data-testid="stImage"],
-    [class*="st-key-card_"] [data-testid="stImageContainer"] {
-        width: 100% !important;  /* let portrait and landscape photos fill the column the same way */
-    }
-    [class*="st-key-card_"] [data-testid="stImage"] img {
-        width: 100% !important;
-        height: 260px;
-        object-fit: cover;       /* crop to fill instead of stretching */
-        border-radius: 12px;
-    }
     .results-heading { color: white !important; text-align: center; }
+    .walk-note { color: #e8ecf8; text-align: center; margin: -0.4rem 0 1rem; }
     [data-testid="stAlert"] {
         background: rgba(255, 255, 255, 0.92);
         border-radius: 12px;
@@ -67,8 +43,23 @@ if not results:
 # html.escape so a query like "<b>pizza" can't break the page layout
 st.markdown(f"<h3 class='results-heading'>Results for: <i>{html.escape(query)}</i></h3>", unsafe_allow_html=True)
 
+# Where walk times are measured from (GPS, picked building, or a building named in the search)
+origin = current_origin(query)
+if origin:
+    st.markdown(f"<p class='walk-note'>🚶 Walk times from {html.escape(origin_description(origin))}</p>",
+                unsafe_allow_html=True)
+else:
+    st.markdown("<p class='walk-note'>🚶 Want walk times? Set where you are on the Search page.</p>",
+                unsafe_allow_html=True)
+
 if error:
     st.warning(error, icon="⚠️")
+
+try:
+    ratings = summarize(all_reviews())
+except Exception as e:  # review database unreachable: still show results, just without stars
+    print(f"[SwampSnacks] Couldn't load reviews: {e!r}")
+    ratings = {}
 
 now = now_at_uf()
 for spot in results:
@@ -80,7 +71,16 @@ for spot in results:
         with info_col:
             st.markdown(f"#### {spot['name']}")
             st.write(f"📍 {spot['nearest_landmark']}  ·  {spot['price_range']}  ·  {spot['speed'].replace('_', ' ')}")
-            st.write(f"{'🟢' if is_open else '🔴'} {status}")
+            walk = walk_label(origin, spot)
+            if walk:
+                st.write(walk)
+
+            status_line = f"{'🟢' if is_open else ('⚪' if is_open is None else '🔴')} {status}"
+            if spot["id"] in ratings:
+                avg, count = ratings[spot["id"]]
+                status_line += (f"  ·  <span class='stars'>{stars(avg)}</span> {avg:.1f} "
+                                f"({count} review{'s' if count != 1 else ''})")
+            st.markdown(status_line, unsafe_allow_html=True)
 
             reasons = spot.get("reasons")
             if reasons:
@@ -89,11 +89,17 @@ for spot in results:
             else:
                 st.write(" ".join(f"`{t}`" for t in spot.get("tags", [])[:6]))
 
-            if "google_maps_url" in spot:
-                st.link_button("Open in Google Maps", spot["google_maps_url"])
+            map_col, review_col, _ = st.columns([1, 1, 2])
+            with map_col:
+                walk_url = directions_url(origin, spot)
+                if walk_url:
+                    st.link_button("Get directions", walk_url)
+                elif "google_maps_url" in spot:
+                    st.link_button("Open in Google Maps", spot["google_maps_url"])
+            with review_col:
+                if st.button("⭐ Reviews", key=f"reviews_{spot['id']}"):
+                    st.session_state.open_review = spot["id"]  # the Reviews page opens this spot
+                    st.switch_page("pages/Reviews.py")
 
         with img_col:
-            try:
-                st.image(get_image(spot), width="stretch")
-            except Exception:  # older Streamlit versions
-                st.image(get_image(spot), use_container_width=True)
+            show_spot_image(spot)
