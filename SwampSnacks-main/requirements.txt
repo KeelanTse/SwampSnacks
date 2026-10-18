@@ -1,5 +1,0 @@
-streamlit
-google-genai
-flask
-requests # saves reviews to Supabase (also installed with streamlit)
-tzdata   # time-zone data for Windows; harmless elsewhere
