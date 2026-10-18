@@ -305,42 +305,34 @@ def show_banner():
     )
 
 def page_transition(page: str, view: str = ""):
-    """Smooth page changes: the page content fades and slides up, the banner and nav bar fade in.
+    """Smooth page changes: the page content fades in and grows slightly into place.
 
-    Call it right after show_banner(). Each page gets its own animation name, so the animation
+    Call it at the top of each page. Each page gets its own animation name, so the animation
     replays when you switch pages but not when you click things on the same page.
-    `view` replays just the content part for a different view of the same page
-    (the Reviews page uses it when you open a spot or go back to the list).
+    `view` replays it for a different view of the same page (the Reviews page uses it
+    when you open a spot or go back to the list). The banner and nav bar don't animate:
+    FrontPage.py draws them once, so they stay still.
     """
-    def css_name(text: str) -> str:
-        return re.sub(r"[^A-Za-z0-9_-]", "_", text)
-
-    chrome_anim = "pageFade_" + css_name(page)
-    content_anim = "pageIn_" + css_name(f"{page}_{view}")
+    anim = "pageIn_" + re.sub(r"[^A-Za-z0-9_-]", "_", f"{page}_{view}")
     top = ('[data-testid="stMainBlockContainer"] > [data-testid="stVerticalBlock"]',
            '[data-testid="stMainBlockContainer"] > div > [data-testid="stVerticalBlock"]')  # newer / older Streamlit
-    # Page content = everything after the banner except the nav bar; "chrome" = the banner and nav bar
+    # Page content = everything after the banner except the nav bar
     content = ", ".join(f"{t} > :has(.banner) ~ :not(:has(.st-key-navbar))" for t in top)
-    chrome = ", ".join(f"{t} > :has(.banner), {t} > :has(.st-key-navbar)" for t in top)
     st.markdown(
         f"""
         <style>
-        @keyframes {content_anim} {{
-            from {{ opacity: 0; transform: translateY(14px); }}
+        /* Fade in while growing from 98% size. (Sliding up from below would make the page briefly
+           taller, and on the Search page Streamlit's chat scrolling would then nudge the top bar.) */
+        @keyframes {anim} {{
+            from {{ opacity: 0; transform: scale(0.98); }}
             to   {{ opacity: 1; transform: none; }}
         }}
-        @keyframes {chrome_anim} {{
-            from {{ opacity: 0; }}
-            to   {{ opacity: 1; }}
-        }}
         {content}, [data-testid="stBottom"] {{
-            animation: {content_anim} 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-        }}
-        {chrome} {{
-            animation: {chrome_anim} 0.3s ease-out both;
+            animation: {anim} 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+            transform-origin: top center;
         }}
         @media (prefers-reduced-motion: reduce) {{
-            {content}, {chrome}, [data-testid="stBottom"] {{ animation: none; }}
+            {content}, [data-testid="stBottom"] {{ animation: none; }}
         }}
         </style>
         """,
@@ -351,10 +343,10 @@ def page_transition(page: str, view: str = ""):
 def show_nav(current: str):
     """Navigation bar under the banner. `current` is "Home", "Search", "Results", or "Reviews"."""
     pages = [
-        ("Home", "FrontPage.py", "🏠"),
-        ("Search", "pages/Search.py", "🔍"),
-        ("Results", "pages/Results.py", "🍽️"),
-        ("Reviews", "pages/Reviews.py", "⭐"),
+        ("Home", "app_pages/Home.py", "🏠"),
+        ("Search", "app_pages/Search.py", "🔍"),
+        ("Results", "app_pages/Results.py", "🍽️"),
+        ("Reviews", "app_pages/Reviews.py", "⭐"),
     ]
 
     st.markdown(
