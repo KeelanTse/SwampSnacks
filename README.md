@@ -101,7 +101,7 @@ Your browser opens at <http://localhost:8501>. Click **Find my food 🐊**, set 
 - **GitHub Codespaces:** open the repo in a Codespace. The included dev container installs everything and starts the app automatically (you still need to add `secrets.toml`).
 - **Terminal chatbot:** `python app.py` gives a text-only version that's handy for testing prompts.
 
-## 🧭 What's next for SwampSnacks
+## 🐊 What's next for SwampSnacks
 
 - **Live Campus Crowding Integration:** Adding real-time crowd metrics/wait times.
 - **Interactive Map Integration:** Embedding live Google Maps route visualizers into our Streamlit interface to provide directions.
