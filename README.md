@@ -51,7 +51,7 @@ As this was the first hackathon for our entire team, we aimed to use a familiar 
 
 Python packages (installed in step 3 below): `streamlit`, `google-genai`, `flask`, `requests`, and `tzdata` (time zones on Windows).
 
-> **No API key?** The app still runs. It falls back to simple keyword matching and shows a yellow notice on the Results page.
+> The app still runs without a Gemini API key. It falls back to simple keyword matching and shows a yellow notice on the Results page.
 
 ## 🚀 Getting started
 
@@ -100,69 +100,6 @@ Your browser opens at <http://localhost:8501>. Click **Find my food 🐊**, set 
 
 - **GitHub Codespaces:** open the repo in a Codespace. The included dev container installs everything and starts the app automatically (you still need to add `secrets.toml`).
 - **Terminal chatbot:** `python app.py` gives a text-only version that's handy for testing prompts.
-
-## ☁️ Deploying to Streamlit Community Cloud
-
-1. Push the repo to GitHub.
-2. At [share.streamlit.io](https://share.streamlit.io), click **Create app**, pick the repo, and set the main file to **`FrontPage.py`**.
-3. In the app's **Settings → Secrets**, paste the contents of your `secrets.toml` (the Gemini key, plus the `[supabase]` section if you set it up).
-4. Every push to the main branch redeploys the app automatically.
-
-## ⭐ Reviews on the live site
-
-With no extra setup, reviews are saved to a local `reviews.db` file. That's fine on your laptop, but **Streamlit Cloud deletes local files whenever the app restarts or redeploys**, so reviews on the live site would disappear. A free Supabase database fixes that (about 5 minutes):
-
-1. Create a project at [supabase.com](https://supabase.com).
-2. Open **SQL Editor**, paste this, and click **Run**:
-
-   ```sql
-   create table reviews (
-     id bigint generated always as identity primary key,
-     spot_id text not null,
-     name text not null default 'Anonymous Gator',
-     rating int not null check (rating between 1 and 5),
-     text text not null check (char_length(text) <= 500),
-     created_at timestamptz not null default now()
-   );
-   alter table reviews enable row level security;
-   create policy "Anyone can read reviews" on reviews for select using (true);
-   create policy "Anyone can add reviews" on reviews for insert with check (true);
-   grant select, insert on table reviews to anon, authenticated;
-   ```
-
-3. Copy your **Project URL** and **publishable key** (older projects call it the **anon public** key). Both are in **Project Settings** (under API / API Keys), or click **Connect** at the top of the dashboard.
-4. Add them to `.streamlit/secrets.toml` **and** to Streamlit Cloud's **Settings → Secrets**:
-
-   ```toml
-   [supabase]
-   url = "https://YOUR-PROJECT.supabase.co"
-   key = "YOUR-PUBLISHABLE-OR-ANON-KEY"
-   ```
-
-The app switches to Supabase automatically once those secrets exist. The policies only allow reading and adding reviews, so nobody can edit or delete them through the site. To remove spam, delete the row in Supabase's **Table Editor**.
-
-## 📁 Project structure
-
-```
-FrontPage.py            Home page (run this with streamlit run)
-pages/
-  Search.py             "What are your cravings?" chat box + "Walking from" location picker
-  Results.py            Recommendation cards: walk time, open status, ratings, directions
-  Reviews.py            Search the database, read and post reviews
-utils.py                Gemini calls, prompt, open/closed hours, shared page styling
-walking.py              Walk-time estimates, campus starting points, GPS button
-reviews.py              Saves and loads reviews (SQLite or Supabase)
-components/
-  location_button/      Small HTML component that asks the browser for GPS
-foodspots.json          The restaurant database (hours, tags, prices, lat/lng, photos)
-compressedImages/       Restaurant photos
-app.py                  Terminal version of the chatbot
-web_app.py              Experimental Flask API version (needs a templates/index.html page)
-.streamlit/config.toml  Theme and layout settings
-requirements.txt        Python packages
-```
-
-**Editing the database:** each spot in `foodspots.json` has an `id`, `name`, `zone`, `nearest_landmark`, `lat`/`lng`, `price_range`, `tags`, weekly `hours` (24-hour `"HH:MM-HH:MM"`, `"closed"` or `"unknown"`), `google_maps_url`, `speed`, and an optional `image`. Walk times use the `lat`/`lng` (accurate to about 100 m), so fix a spot's coordinates if its walk time looks off. Campus starting points are in `CAMPUS_PLACES` in `walking.py`.
 
 ## 🧭 What's next for SwampSnacks
 
