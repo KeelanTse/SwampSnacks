@@ -3,14 +3,21 @@
     "id": "uf-002",
     "name": "Panda Express (Reitz Union)",
     "zone": "Central Campus",
-    "nearest_landmark": "Reitz Union",
+    "nearest_landmark": "Reitz Union food court",
     "price_range": "$",
     "tags": [
       "chinese",
       "fast_food",
-      "florida_fresh_dining",
+      "gator_dining",
       "on_campus",
-      "vegetarian_options"
+      "vegetarian_options",
+      "asian",
+      "orange_chicken",
+      "noodles",
+      "fried_rice",
+      "rice_bowls",
+      "cheap_eats",
+      "quick_lunch"
     ],
     "hours": {
       "mon": "10:30-21:00",
@@ -21,52 +28,64 @@
       "sat": "11:00-17:00",
       "sun": "11:00-17:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Panda+Express+Reitz+Union+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/2. Panda Express.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Panda+Express+Reitz+Union+University+of+Florida+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-003",
     "name": "Sonic (Reitz Union)",
     "zone": "Central Campus",
-    "nearest_landmark": "Reitz Union",
+    "nearest_landmark": "Reitz Union food court",
     "price_range": "$",
     "tags": [
       "burgers",
       "hot_dogs",
       "milkshakes",
       "fast_food",
-      "florida_fresh_dining",
+      "gator_dining",
       "on_campus",
-      "late_night"
+      "late_night",
+      "american",
+      "desserts",
+      "ice_cream",
+      "sweets",
+      "drinks",
+      "breakfast",
+      "cheap_eats"
     ],
     "hours": {
-      "mon": "10:30-23:00",
-      "tue": "10:30-23:00",
-      "wed": "10:30-23:00",
-      "thu": "10:30-23:00",
-      "fri": "10:30-23:00",
-      "sat": "11:00-23:00",
-      "sun": "11:00-23:00"
+      "mon": "08:00-22:30",
+      "tue": "08:00-22:30",
+      "wed": "08:00-22:30",
+      "thu": "08:00-22:30",
+      "fri": "08:00-22:30",
+      "sat": "09:00-22:30",
+      "sun": "09:00-22:30"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Sonic+Reitz+Union+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/3. Sonic.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Sonic+655+Reitz+Union+Dr+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-004",
     "name": "Halal Shack (Reitz Union)",
     "zone": "Central Campus",
-    "nearest_landmark": "Reitz Union",
+    "nearest_landmark": "Reitz Union food court",
     "price_range": "$",
     "tags": [
       "halal",
       "middle_eastern",
       "bowls",
       "salads",
-      "florida_fresh_dining",
+      "gator_dining",
       "on_campus",
-      "vegetarian_options"
+      "vegetarian_options",
+      "mediterranean",
+      "chicken",
+      "falafel",
+      "wraps",
+      "rice_bowls",
+      "healthy",
+      "quick_lunch"
     ],
     "hours": {
       "mon": "10:30-20:00",
@@ -77,9 +96,8 @@
       "sat": "11:00-17:00",
       "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Halal+Shack+Reitz+Union+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/4. Halal Shack.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Halal+Shack+Reitz+Union+University+of+Florida+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-005",
@@ -94,7 +112,12 @@
       "cheap_eats",
       "outdoor_seating",
       "on_campus",
-      "weekdays_only"
+      "weekdays_only",
+      "plant_based",
+      "curry",
+      "rice",
+      "healthy",
+      "lunch"
     ],
     "hours": {
       "mon": "11:00-14:00",
@@ -106,14 +129,13 @@
       "sun": "closed"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Krishna+Lunch+Plaza+of+the+Americas+University+of+Florida+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/5. Krishna Lucch.jpg"
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-006",
     "name": "The Food Hall at Gator Corner",
-    "zone": "South Campus",
-    "nearest_landmark": "Ben Hill Griffin Stadium",
+    "zone": "Central Campus",
+    "nearest_landmark": "Stadium Rd & Gale Lemerand Dr (by Ben Hill Griffin Stadium)",
     "price_range": "$$",
     "tags": [
       "dining_hall",
@@ -121,8 +143,16 @@
       "vegan_options",
       "vegetarian_options",
       "gluten_free_options",
-      "florida_fresh_dining",
-      "on_campus"
+      "gator_dining",
+      "on_campus",
+      "buffet",
+      "breakfast",
+      "lunch",
+      "dinner",
+      "pizza",
+      "salads",
+      "desserts",
+      "group_friendly"
     ],
     "hours": {
       "mon": "07:00-21:00",
@@ -133,13 +163,12 @@
       "sat": "10:00-21:00",
       "sun": "10:00-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Food+Hall+at+Gator+Corner+University+of+Florida+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/6. Gator Dining.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Gator+Corner+Dining+Center+University+of+Florida+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-007",
-    "name": "The Eatery at Broward",
+    "name": "The Eatery at Broward Hall",
     "zone": "East Campus",
     "nearest_landmark": "Broward Hall",
     "price_range": "$$",
@@ -149,8 +178,16 @@
       "vegan_options",
       "vegetarian_options",
       "gluten_free_options",
-      "florida_fresh_dining",
-      "on_campus"
+      "gator_dining",
+      "on_campus",
+      "buffet",
+      "breakfast",
+      "lunch",
+      "dinner",
+      "pizza",
+      "salads",
+      "desserts",
+      "group_friendly"
     ],
     "hours": {
       "mon": "07:00-21:00",
@@ -158,38 +195,43 @@
       "wed": "07:00-21:00",
       "thu": "07:00-21:00",
       "fri": "07:00-21:00",
-      "sat": "10:00-21:00",
-      "sun": "10:00-21:00"
+      "sat": "08:30-21:00",
+      "sun": "08:30-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Eatery+at+Broward+University+of+Florida+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/7. Broward Dining.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Eatery+at+Broward+Hall+University+of+Florida+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-008",
     "name": "Chick-fil-A (The Hub)",
     "zone": "Central Campus",
-    "nearest_landmark": "The Hub",
+    "nearest_landmark": "The Hub (Stadium Rd)",
     "price_range": "$",
     "tags": [
       "chicken",
       "fast_food",
       "breakfast",
-      "florida_fresh_dining",
-      "on_campus"
+      "gator_dining",
+      "on_campus",
+      "american",
+      "sandwiches",
+      "chicken_tenders",
+      "nuggets",
+      "milkshakes",
+      "desserts",
+      "quick_lunch"
     ],
     "hours": {
-      "mon": "07:30-15:00",
-      "tue": "07:30-15:00",
-      "wed": "07:30-15:00",
-      "thu": "07:30-15:00",
-      "fri": "07:30-15:00",
-      "sat": "closed",
+      "mon": "07:00-20:00",
+      "tue": "07:00-20:00",
+      "wed": "07:00-20:00",
+      "thu": "07:00-20:00",
+      "fri": "07:00-18:00",
+      "sat": "10:30-18:00",
       "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chick-fil-A+The+Hub+University+of+Florida+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/Chick-fil-A The Hub (photo).jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chick-fil-A+The+Hub+1765+Stadium+Rd+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-009",
@@ -202,9 +244,17 @@
       "pastries",
       "breakfast",
       "study_spot",
-      "florida_fresh_dining",
+      "gator_dining",
       "on_campus",
-      "vegan_options"
+      "vegan_options",
+      "cafe",
+      "desserts",
+      "sweets",
+      "tea",
+      "lattes",
+      "drinks",
+      "snacks",
+      "sandwiches"
     ],
     "hours": {
       "mon": "07:30-22:00",
@@ -215,15 +265,14 @@
       "sat": "10:00-18:00",
       "sun": "12:00-22:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Starbucks+Marston+Science+Library+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/Starbucks Marston (photo).jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Starbucks+Marston+Science+Library+University+of+Florida+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-010",
     "name": "Piesanos Stone Fired Pizza",
     "zone": "Midtown",
-    "nearest_landmark": "Northeast corner of campus (University Ave & NW 13th St)",
+    "nearest_landmark": "University Ave & NW 13th St (Holiday Inn building)",
     "price_range": "$$",
     "tags": [
       "pizza",
@@ -232,53 +281,63 @@
       "salads",
       "vegetarian_options",
       "gluten_free_options",
-      "group_friendly"
+      "group_friendly",
+      "bar",
+      "late_night",
+      "pasta",
+      "calzones",
+      "desserts",
+      "date_night"
+    ],
+    "hours": {
+      "mon": "11:00-00:00",
+      "tue": "11:00-00:00",
+      "wed": "11:00-00:00",
+      "thu": "11:00-00:00",
+      "fri": "11:00-00:00",
+      "sat": "11:00-00:00",
+      "sun": "11:00-22:00"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Piesanos+Stone+Fired+Pizza+1250+W+University+Ave+Gainesville+FL",
+    "speed": "sit_down"
+  },
+  {
+    "id": "uf-011",
+    "name": "Tup Tim Thai Restaurant & Sushi Bar",
+    "zone": "Midtown",
+    "nearest_landmark": "University Ave between NW 12th & 13th St",
+    "price_range": "$$",
+    "tags": [
+      "thai",
+      "curry",
+      "noodles",
+      "sushi",
+      "vegan_options",
+      "vegetarian_options",
+      "gluten_free_options",
+      "asian",
+      "japanese",
+      "pad_thai",
+      "rice",
+      "date_night"
     ],
     "hours": {
       "mon": "11:00-22:00",
       "tue": "11:00-22:00",
       "wed": "11:00-22:00",
       "thu": "11:00-22:00",
-      "fri": "11:00-23:00",
-      "sat": "11:00-23:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
       "sun": "11:00-22:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Piesanos+Stone+Fired+Pizza+1250+W+University+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/Piesanos (photo).jpg"
-  },
-  {
-    "id": "uf-011",
-    "name": "Tup Tim Thai",
-    "zone": "Midtown",
-    "nearest_landmark": "University Ave across from campus",
-    "price_range": "$$",
-    "tags": [
-      "thai",
-      "curry",
-      "noodles",
-      "vegan_options",
-      "vegetarian_options",
-      "gluten_free_options"
-    ],
-    "hours": {
-      "mon": "11:00-21:30",
-      "tue": "11:00-21:30",
-      "wed": "11:00-21:30",
-      "thu": "11:00-21:30",
-      "fri": "11:00-21:30",
-      "sat": "12:00-21:30",
-      "sun": "12:00-21:00"
-    },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Tup+Tim+Thai+University+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/10. Tup Tim Thai.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Tup+Tim+Thai+1228+W+University+Ave+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-012",
     "name": "Tea Moment",
     "zone": "Midtown",
-    "nearest_landmark": "University Ave across from campus",
+    "nearest_landmark": "NW 18th St just off University Ave",
     "price_range": "$",
     "tags": [
       "boba",
@@ -286,7 +345,12 @@
       "drinks",
       "snacks",
       "study_spot",
-      "vegan_options"
+      "vegan_options",
+      "tea",
+      "milk_tea",
+      "sweets",
+      "asian",
+      "late_night"
     ],
     "hours": {
       "mon": "11:00-23:00",
@@ -297,15 +361,14 @@
       "sat": "11:00-23:00",
       "sun": "11:00-23:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Tea+Moment+W+University+Ave+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/Tea Moment (photo).jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Tea+Moment+16+NW+18th+St+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-013",
     "name": "The Swamp Restaurant",
-    "zone": "Midtown",
-    "nearest_landmark": "1104 SW 2nd Ave, behind Midtown",
+    "zone": "Innovation District",
+    "nearest_landmark": "SW 2nd Ave & SW 11th St (2 blocks east of campus)",
     "price_range": "$$",
     "tags": [
       "american",
@@ -316,7 +379,11 @@
       "game_day",
       "patio",
       "group_friendly",
-      "parents_visiting"
+      "parents_visiting",
+      "sandwiches",
+      "salads",
+      "brunch",
+      "late_night"
     ],
     "hours": {
       "mon": "11:00-23:00",
@@ -328,14 +395,13 @@
       "sun": "10:00-22:00"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Swamp+Restaurant+1104+SW+2nd+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/12. The Swamp.jpg"
+    "speed": "sit_down"
   },
   {
     "id": "uf-014",
     "name": "Just Salad",
     "zone": "Midtown",
-    "nearest_landmark": "University Ave across from campus",
+    "nearest_landmark": "University Ave & NW 14th St",
     "price_range": "$$",
     "tags": [
       "salads",
@@ -343,7 +409,11 @@
       "healthy",
       "vegan_options",
       "vegetarian_options",
-      "gluten_free_options"
+      "gluten_free_options",
+      "wraps",
+      "grain_bowls",
+      "quick_lunch",
+      "lunch"
     ],
     "hours": {
       "mon": "10:30-21:00",
@@ -354,15 +424,14 @@
       "sat": "11:00-20:00",
       "sun": "11:00-20:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Just+Salad+W+University+Ave+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/13. Just Salad.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Just+Salad+1404+W+University+Ave+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-015",
     "name": "Playa Bowls",
-    "zone": "Midtown",
-    "nearest_landmark": "University Ave across from campus",
+    "zone": "SW 13th St",
+    "nearest_landmark": "SW 5th Ave just east of SW 13th St",
     "price_range": "$",
     "tags": [
       "acai",
@@ -371,26 +440,29 @@
       "healthy",
       "vegan_options",
       "vegetarian_options",
-      "gluten_free_options"
+      "gluten_free_options",
+      "fruit",
+      "breakfast",
+      "snacks",
+      "sweets"
     ],
     "hours": {
-      "mon": "08:00-22:00",
-      "tue": "08:00-22:00",
-      "wed": "08:00-22:00",
-      "thu": "08:00-22:00",
-      "fri": "08:00-22:00",
-      "sat": "09:00-22:00",
-      "sun": "09:00-21:00"
+      "mon": "08:00-20:00",
+      "tue": "08:00-20:00",
+      "wed": "08:00-20:00",
+      "thu": "08:00-20:00",
+      "fri": "08:00-20:00",
+      "sat": "08:00-20:00",
+      "sun": "08:00-20:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Playa+Bowls+W+University+Ave+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/Playa Bowls (photo).jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Playa+Bowls+1260+SW+5th+Ave+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-016",
     "name": "Midpoint Park & Eatery",
-    "zone": "Midtown",
-    "nearest_landmark": "SW 2nd Ave near campus",
+    "zone": "Innovation District",
+    "nearest_landmark": "SW 2nd Ave, Innovation District (~10 min walk from campus)",
     "price_range": "$$",
     "tags": [
       "food_trucks",
@@ -401,46 +473,21 @@
       "game_day",
       "group_friendly",
       "vegan_options",
-      "late_night"
+      "variety",
+      "lunch",
+      "dinner"
     ],
     "hours": {
-      "mon": "11:00-22:00",
-      "tue": "11:00-22:00",
-      "wed": "11:00-22:00",
-      "thu": "11:00-22:00",
-      "fri": "11:00-00:00",
-      "sat": "11:00-00:00",
-      "sun": "11:00-21:00"
+      "mon": "11:00-20:00",
+      "tue": "11:00-20:00",
+      "wed": "11:00-20:00",
+      "thu": "11:00-20:00",
+      "fri": "11:00-20:00",
+      "sat": "11:00-20:00",
+      "sun": "11:00-20:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Midpoint+Park+%26+Eatery+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/15. Midpoint Park & Eatery.jpg"
-  },
-  {
-    "id": "uf-017",
-    "name": "Leonardo's Pizza by the Slice",
-    "zone": "Midtown",
-    "nearest_landmark": "University Ave across from campus",
-    "price_range": "$",
-    "tags": [
-      "pizza",
-      "by_the_slice",
-      "cheap_eats",
-      "vegetarian_options",
-      "late_night"
-    ],
-    "hours": {
-      "mon": "11:00-22:00",
-      "tue": "11:00-22:00",
-      "wed": "11:00-22:00",
-      "thu": "11:00-22:00",
-      "fri": "11:00-23:00",
-      "sat": "11:00-23:00",
-      "sun": "12:00-21:00"
-    },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Leonardo%27s+Pizza+by+the+Slice+W+University+Ave+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/16. Leonardos Pizza.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Midpoint+Park+%26+Eatery+931+SW+2nd+Ave+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-018",
@@ -455,7 +502,11 @@
       "bar",
       "patio",
       "game_day",
-      "late_night"
+      "late_night",
+      "wings",
+      "sandwiches",
+      "drinks",
+      "sports_bar"
     ],
     "hours": {
       "mon": "11:00-02:00",
@@ -466,15 +517,14 @@
       "sat": "11:00-02:00",
       "sun": "11:00-02:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mother%27s+Pub+%26+Grill+W+University+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/17. Mother's Pub & Grill.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mother%27s+Pub+%26+Grill+1017+W+University+Ave+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-019",
-    "name": "Bento Cafe (University Ave)",
-    "zone": "Midtown",
-    "nearest_landmark": "University Ave & NW 17th St",
+    "name": "Bento Asian Kitchen + Sushi (Archer Rd)",
+    "zone": "Archer Rd",
+    "nearest_landmark": "SW Archer Rd just east of I-75",
     "price_range": "$$",
     "tags": [
       "japanese",
@@ -482,26 +532,30 @@
       "sushi",
       "bubble_tea",
       "bowls",
-      "vegetarian_options"
+      "vegetarian_options",
+      "asian",
+      "ramen",
+      "poke",
+      "noodles",
+      "rice_bowls"
     ],
     "hours": {
-      "mon": "11:00-22:00",
-      "tue": "11:00-22:00",
-      "wed": "11:00-22:00",
-      "thu": "11:00-22:00",
-      "fri": "11:00-22:00",
-      "sat": "11:00-22:00",
-      "sun": "11:00-22:00"
+      "mon": "11:00-23:00",
+      "tue": "11:00-23:00",
+      "wed": "11:00-23:00",
+      "thu": "11:00-23:00",
+      "fri": "11:00-23:00",
+      "sat": "11:00-23:00",
+      "sun": "11:00-23:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Bento+Cafe+W+University+Ave+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/18. Bento Cafe.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Bento+Asian+Kitchen+%2B+Sushi+3841+SW+Archer+Rd+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-020",
     "name": "Chipotle (University Ave)",
     "zone": "Midtown",
-    "nearest_landmark": "University Ave across from campus",
+    "nearest_landmark": "University Ave & NW 15th St",
     "price_range": "$",
     "tags": [
       "mexican",
@@ -510,7 +564,12 @@
       "fast_casual",
       "vegan_options",
       "vegetarian_options",
-      "gluten_free_options"
+      "gluten_free_options",
+      "tacos",
+      "salads",
+      "rice_bowls",
+      "quick_lunch",
+      "cheap_eats"
     ],
     "hours": {
       "mon": "10:45-22:00",
@@ -521,65 +580,72 @@
       "sat": "10:45-22:00",
       "sun": "10:45-22:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chipotle+W+University+Ave+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/Chipotle (photo).jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chipotle+1432+W+University+Ave+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-021",
     "name": "Raising Cane's (University Ave)",
     "zone": "Midtown",
-    "nearest_landmark": "University Ave near campus",
+    "nearest_landmark": "University Ave & NW 17th St",
     "price_range": "$",
     "tags": [
       "chicken",
       "fast_food",
-      "late_night"
+      "late_night",
+      "american",
+      "chicken_tenders",
+      "fries",
+      "sandwiches",
+      "drive_thru",
+      "cheap_eats"
     ],
     "hours": {
-      "mon": "10:00-01:30",
-      "tue": "10:00-01:30",
-      "wed": "10:00-01:30",
-      "thu": "10:00-01:30",
-      "fri": "10:00-03:30",
-      "sat": "10:00-03:30",
-      "sun": "10:00-01:30"
+      "mon": "10:00-02:00",
+      "tue": "10:00-02:00",
+      "wed": "10:00-02:00",
+      "thu": "10:00-02:00",
+      "fri": "10:00-03:00",
+      "sat": "10:00-03:00",
+      "sun": "10:00-02:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Raising+Cane%27s+W+University+Ave+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/Raising Canes (photo).jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Raising+Cane%27s+1680+W+University+Ave+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-022",
     "name": "Jimmy John's (University Ave)",
     "zone": "Midtown",
-    "nearest_landmark": "University Ave across from campus",
+    "nearest_landmark": "University Ave & NW 17th St",
     "price_range": "$",
     "tags": [
       "sandwiches",
       "subs",
       "fast_food",
       "delivery",
-      "late_night"
+      "late_night",
+      "american",
+      "wraps",
+      "quick_lunch",
+      "cheap_eats"
     ],
     "hours": {
-      "mon": "10:00-03:00",
-      "tue": "10:00-03:00",
-      "wed": "10:00-03:00",
-      "thu": "10:00-03:00",
-      "fri": "10:00-03:00",
-      "sat": "10:00-03:00",
-      "sun": "10:00-03:00"
+      "mon": "10:00-01:00",
+      "tue": "10:00-01:00",
+      "wed": "10:00-01:00",
+      "thu": "10:00-01:00",
+      "fri": "10:00-01:00",
+      "sat": "10:00-01:00",
+      "sun": "10:00-01:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Jimmy+John%27s+W+University+Ave+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/Jimmy Johns (photo).jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Jimmy+John%27s+1724+W+University+Ave+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-023",
     "name": "Leonardo's 706",
-    "zone": "Midtown",
-    "nearest_landmark": "University Ave & NW 7th St",
+    "zone": "Downtown",
+    "nearest_landmark": "University Ave & NW 7th St (west edge of downtown)",
     "price_range": "$$$",
     "tags": [
       "italian",
@@ -589,34 +655,44 @@
       "patio",
       "date_night",
       "parents_visiting",
-      "brunch"
+      "brunch",
+      "desserts",
+      "salads",
+      "upscale",
+      "dinner"
     ],
     "hours": {
-      "mon": "11:00-22:00",
-      "tue": "11:00-22:00",
-      "wed": "11:00-22:00",
-      "thu": "11:00-22:00",
-      "fri": "11:00-22:00",
-      "sat": "10:00-22:00",
-      "sun": "10:00-21:00"
+      "mon": "17:00-22:00",
+      "tue": "17:00-22:00",
+      "wed": "17:00-22:00",
+      "thu": "17:00-22:00",
+      "fri": "17:00-23:00",
+      "sat": "17:00-23:00",
+      "sun": "10:30-15:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Leonardo%27s+706+W+University+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/22. Leonardo Pasta.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Leonardo%27s+706+706+W+University+Ave+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-024",
     "name": "Karma Cream",
-    "zone": "Midtown",
-    "nearest_landmark": "607 W University Ave (near NW 6th St)",
+    "zone": "Downtown",
+    "nearest_landmark": "University Ave & NW 6th St (west edge of downtown)",
     "price_range": "$",
     "tags": [
       "ice_cream",
       "dessert",
       "coffee",
+      "sandwiches",
       "vegan",
+      "plant_based",
       "vegan_options",
-      "study_spot"
+      "study_spot",
+      "desserts",
+      "sweets",
+      "milkshakes",
+      "late_night",
+      "cafe"
     ],
     "hours": {
       "mon": "08:00-23:00",
@@ -628,66 +704,73 @@
       "sun": "10:00-22:00"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Karma+Cream+607+W+University+Ave+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/23. Karma Cream.jpg"
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-025",
-    "name": "El Indio",
+    "name": "El Indio (13th St)",
     "zone": "NW 13th St",
-    "nearest_landmark": "NW 13th St north of University Ave",
+    "nearest_landmark": "NW 13th St, a few blocks north of University Ave",
     "price_range": "$",
     "tags": [
       "mexican",
       "tacos",
       "burritos",
+      "breakfast",
       "cheap_eats",
-      "vegetarian_options"
+      "drive_thru",
+      "outdoor_seating",
+      "vegetarian_options",
+      "quesadillas",
+      "latin",
+      "lunch"
     ],
     "hours": {
-      "mon": "11:00-21:00",
-      "tue": "11:00-21:00",
-      "wed": "11:00-21:00",
-      "thu": "11:00-21:00",
-      "fri": "11:00-21:00",
-      "sat": "11:00-21:00",
-      "sun": "closed"
+      "mon": "09:00-22:00",
+      "tue": "09:00-22:00",
+      "wed": "09:00-22:00",
+      "thu": "09:00-22:00",
+      "fri": "09:00-22:00",
+      "sat": "09:00-22:00",
+      "sun": "09:00-22:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=El+Indio+Mexican+NW+13th+St+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/24. El Indio.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=El+Indio+407+NW+13th+St+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-026",
     "name": "Reggae Shack Cafe",
-    "zone": "Midtown",
-    "nearest_landmark": "619 W University Ave (near NW 6th St)",
+    "zone": "Downtown",
+    "nearest_landmark": "University Ave & NW 6th St (west edge of downtown)",
     "price_range": "$$",
     "tags": [
       "jamaican",
       "caribbean",
       "jerk_chicken",
       "vegan_options",
-      "vegetarian_options"
+      "vegetarian_options",
+      "rice",
+      "curry",
+      "lunch",
+      "dinner"
     ],
     "hours": {
-      "mon": "11:00-21:00",
-      "tue": "11:00-21:00",
-      "wed": "11:00-21:00",
-      "thu": "11:00-21:00",
-      "fri": "11:00-21:00",
-      "sat": "12:00-21:00",
-      "sun": "closed"
+      "mon": "11:00-22:00",
+      "tue": "11:00-22:00",
+      "wed": "11:00-22:00",
+      "thu": "11:00-22:00",
+      "fri": "11:00-22:00",
+      "sat": "11:00-22:00",
+      "sun": "11:00-22:00"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Reggae+Shack+Cafe+619+W+University+Ave+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/25. Reggae Shack Cafe.jpg"
+    "speed": "quick"
   },
   {
     "id": "uf-027",
     "name": "Mi Apa Latin Cafe",
     "zone": "SW 34th St",
-    "nearest_landmark": "114 SW 34th St, just south of University Ave",
+    "nearest_landmark": "University Ave & SW 34th St (West Gate plaza)",
     "price_range": "$",
     "tags": [
       "cuban",
@@ -695,7 +778,11 @@
       "sandwiches",
       "breakfast",
       "cheap_eats",
-      "drive_thru"
+      "drive_thru",
+      "coffee",
+      "cafe",
+      "cuban_sandwich",
+      "pastries"
     ],
     "hours": {
       "mon": "07:00-20:00",
@@ -707,14 +794,13 @@
       "sun": "closed"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mi+Apa+Latin+Cafe+114+SW+34th+St+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/26. Mi Apa Latin Cafe.jpg"
+    "speed": "quick"
   },
   {
     "id": "uf-028",
     "name": "Chuy's",
     "zone": "Archer Rd",
-    "nearest_landmark": "Butler Town Center / Archer Rd",
+    "nearest_landmark": "SW Archer Rd near SW 34th St",
     "price_range": "$$",
     "tags": [
       "tex_mex",
@@ -723,7 +809,11 @@
       "group_friendly",
       "family_friendly",
       "parents_visiting",
-      "vegetarian_options"
+      "vegetarian_options",
+      "tacos",
+      "burritos",
+      "enchiladas",
+      "bar"
     ],
     "hours": {
       "mon": "11:00-21:30",
@@ -734,15 +824,14 @@
       "sat": "11:00-22:30",
       "sun": "11:00-21:30"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chuy%27s+Archer+Rd+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/27. Chuy's.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chuy%27s+3410+SW+Archer+Rd+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-029",
     "name": "Panera Bread (Archer Rd)",
     "zone": "Archer Rd",
-    "nearest_landmark": "SW 34th St & Archer Rd",
+    "nearest_landmark": "SW Archer Rd near SW 34th St",
     "price_range": "$$",
     "tags": [
       "sandwiches",
@@ -751,26 +840,31 @@
       "bakery",
       "breakfast",
       "study_spot",
-      "vegetarian_options"
+      "vegetarian_options",
+      "cafe",
+      "coffee",
+      "pastries",
+      "desserts",
+      "bread",
+      "quick_lunch"
     ],
     "hours": {
-      "mon": "06:30-21:00",
-      "tue": "06:30-21:00",
-      "wed": "06:30-21:00",
-      "thu": "06:30-21:00",
-      "fri": "06:30-21:00",
-      "sat": "07:00-21:00",
-      "sun": "07:00-20:00"
+      "mon": "06:30-22:00",
+      "tue": "06:30-22:00",
+      "wed": "06:30-22:00",
+      "thu": "06:30-22:00",
+      "fri": "06:30-22:00",
+      "sat": "06:30-22:00",
+      "sun": "06:30-22:00"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Panera+Bread+3443+SW+Archer+Rd+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/28. Panara Bread.jpg"
+    "speed": "quick"
   },
   {
     "id": "uf-030",
     "name": "The Top",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "N Main St & University Ave",
     "price_range": "$$",
     "tags": [
       "american",
@@ -779,27 +873,28 @@
       "patio",
       "vegan_options",
       "vegetarian_options",
-      "brunch",
-      "late_night"
+      "late_night",
+      "burgers",
+      "cocktails",
+      "date_night"
     ],
     "hours": {
-      "mon": "17:00-02:00",
+      "mon": "closed",
       "tue": "17:00-02:00",
       "wed": "17:00-02:00",
       "thu": "17:00-02:00",
       "fri": "17:00-02:00",
-      "sat": "11:00-02:00",
-      "sun": "11:00-02:00"
+      "sat": "17:00-02:00",
+      "sun": "17:00-02:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Top+Restaurant+30+N+Main+St+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/29. The Top.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Top+30+N+Main+St+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-031",
     "name": "Maude's Classic Cafe",
     "zone": "Downtown",
-    "nearest_landmark": "Hippodrome Theatre",
+    "nearest_landmark": "Hippodrome Theatre (SE 2nd Pl)",
     "price_range": "$",
     "tags": [
       "coffee",
@@ -809,62 +904,74 @@
       "patio",
       "courtyard",
       "study_spot",
-      "parents_visiting"
+      "parents_visiting",
+      "dessert",
+      "sweets",
+      "cakes",
+      "pastries",
+      "tea"
     ],
     "hours": {
-      "mon": "08:00-23:00",
-      "tue": "08:00-23:00",
-      "wed": "08:00-23:00",
-      "thu": "08:00-23:00",
-      "fri": "08:00-23:00",
-      "sat": "09:00-23:00",
-      "sun": "09:00-22:00"
+      "mon": "07:00-20:00",
+      "tue": "07:00-20:00",
+      "wed": "07:00-20:00",
+      "thu": "07:00-20:00",
+      "fri": "07:00-20:00",
+      "sat": "07:00-20:00",
+      "sun": "07:00-20:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Maude%27s+Classic+Cafe+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/30. Maude's Classic Cafe.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Maude%27s+Cafe+101+SE+2nd+Pl+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-032",
     "name": "Wyatt's Coffee",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SE 2nd Ave next to the Hippodrome",
     "price_range": "$",
     "tags": [
       "coffee",
       "lattes",
       "pastries",
       "study_spot",
-      "vegan_options"
+      "vegan_options",
+      "cafe",
+      "tea",
+      "breakfast"
     ],
     "hours": {
-      "mon": "07:00-18:00",
-      "tue": "07:00-18:00",
-      "wed": "07:00-18:00",
-      "thu": "07:00-18:00",
-      "fri": "07:00-18:00",
-      "sat": "08:00-18:00",
+      "mon": "08:00-17:00",
+      "tue": "08:00-17:00",
+      "wed": "08:00-17:00",
+      "thu": "08:00-17:00",
+      "fri": "08:00-17:00",
+      "sat": "08:00-17:00",
       "sun": "08:00-17:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Wyatt%27s+Coffee+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/31. Wyatt's Coffee.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Wyatt%27s+Coffee+202+SE+2nd+Ave+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-033",
     "name": "4th Ave Food Park",
     "zone": "Downtown",
-    "nearest_landmark": "Depot Park",
+    "nearest_landmark": "SW 4th Ave, a few blocks south of downtown",
     "price_range": "$",
     "tags": [
       "food_trucks",
       "multiple_cuisines",
+      "coffee",
+      "tacos",
+      "pizza",
+      "bagels",
       "outdoor_seating",
       "patio",
       "bar",
       "group_friendly",
       "vegan_options",
-      "game_day"
+      "game_day",
+      "late_night",
+      "sandwiches"
     ],
     "hours": {
       "mon": "11:00-22:00",
@@ -875,15 +982,14 @@
       "sat": "11:00-00:00",
       "sun": "11:00-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=4th+Ave+Food+Park+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/32. 4th Ave. Food park.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=4th+Ave+Food+Park+409+SW+4th+Ave+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-035",
     "name": "Dragonfly Sushi & Sake Co.",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SE 2nd Ave by the Hippodrome",
     "price_range": "$$$",
     "tags": [
       "japanese",
@@ -892,26 +998,28 @@
       "date_night",
       "parents_visiting",
       "vegetarian_options",
-      "gluten_free_options"
+      "gluten_free_options",
+      "asian",
+      "upscale",
+      "bar"
     ],
     "hours": {
       "mon": "17:00-22:00",
       "tue": "17:00-22:00",
       "wed": "17:00-22:00",
       "thu": "17:00-22:00",
-      "fri": "17:00-23:00",
-      "sat": "17:00-23:00",
-      "sun": "17:00-21:30"
+      "fri": "17:00-22:00",
+      "sat": "17:00-22:00",
+      "sun": "17:00-22:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Dragonfly+Sushi+%26+Sake+Co+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/34. Dragon Fly.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Dragonfly+Sushi+%26+Sake+201+SE+2nd+Ave+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-036",
     "name": "Mojo Hogtown Bar-B-Que",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SE 2nd Ave just off Main St",
     "price_range": "$$",
     "tags": [
       "bbq",
@@ -919,26 +1027,30 @@
       "bar",
       "group_friendly",
       "game_day",
-      "family_friendly"
+      "family_friendly",
+      "american",
+      "ribs",
+      "sandwiches",
+      "comfort_food",
+      "mac_and_cheese"
     ],
     "hours": {
-      "mon": "11:00-22:00",
-      "tue": "11:00-22:00",
-      "wed": "11:00-22:00",
-      "thu": "11:00-22:00",
-      "fri": "11:00-23:00",
-      "sat": "11:00-23:00",
-      "sun": "11:00-21:00"
+      "mon": "11:00-23:00",
+      "tue": "11:00-23:00",
+      "wed": "11:00-23:00",
+      "thu": "11:00-23:00",
+      "fri": "11:00-00:00",
+      "sat": "11:00-00:00",
+      "sun": "11:00-23:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mojo+Hogtown+Bar-B-Que+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/35. Mojo Hogtown Bar-B-Que.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mojo+Hogtown+Bar-B-Que+12+SE+2nd+Ave+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-037",
     "name": "Boca Fiesta & Palomino Lounge",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "Sun Center, SE 1st St",
     "price_range": "$$",
     "tags": [
       "mexican",
@@ -947,26 +1059,28 @@
       "vegan_options",
       "vegetarian_options",
       "late_night",
-      "patio"
+      "patio",
+      "latin",
+      "cocktails",
+      "date_night"
     ],
     "hours": {
-      "mon": "11:00-00:00",
-      "tue": "11:00-00:00",
-      "wed": "11:00-00:00",
-      "thu": "11:00-00:00",
-      "fri": "11:00-02:00",
-      "sat": "11:00-02:00",
-      "sun": "11:00-00:00"
+      "mon": "16:00-00:00",
+      "tue": "16:00-00:00",
+      "wed": "16:00-00:00",
+      "thu": "16:00-00:00",
+      "fri": "16:00-00:00",
+      "sat": "16:00-00:00",
+      "sun": "11:00-23:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Boca+Fiesta+Gainesville+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/36. Boca Fiesta & Palomino Lounge.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Boca+Fiesta+232+SE+1st+St+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-038",
     "name": "Loosey's",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SW 1st Ave & SW 2nd St",
     "price_range": "$$",
     "tags": [
       "american",
@@ -975,26 +1089,30 @@
       "patio",
       "live_music",
       "game_day",
-      "vegetarian_options"
+      "vegetarian_options",
+      "late_night",
+      "wings",
+      "sandwiches",
+      "cocktails",
+      "drinks"
     ],
     "hours": {
-      "mon": "11:00-02:00",
-      "tue": "11:00-02:00",
-      "wed": "11:00-02:00",
-      "thu": "11:00-02:00",
-      "fri": "11:00-02:00",
-      "sat": "11:00-02:00",
-      "sun": "11:00-02:00"
+      "mon": "16:00-02:00",
+      "tue": "16:00-02:00",
+      "wed": "16:00-02:00",
+      "thu": "16:00-02:00",
+      "fri": "16:00-02:00",
+      "sat": "11:30-02:00",
+      "sun": "12:30-23:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Loosey%27s+Downtown+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/37. Loosey's.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Loosey%27s+120+SW+1st+Ave+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-039",
     "name": "Emiliano's Cafe",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SE 1st Ave just off Main St",
     "price_range": "$$$",
     "tags": [
       "latin",
@@ -1003,7 +1121,11 @@
       "patio",
       "date_night",
       "parents_visiting",
-      "vegetarian_options"
+      "vegetarian_options",
+      "spanish",
+      "cocktails",
+      "wine",
+      "upscale"
     ],
     "hours": {
       "mon": "11:00-21:30",
@@ -1014,15 +1136,14 @@
       "sat": "10:00-22:00",
       "sun": "10:00-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Emiliano%27s+Cafe+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/38. Emiliano's Cafe.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Emiliano%27s+Cafe+7+SE+1st+Ave+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-041",
     "name": "Liquid Ginger",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SE 2nd Pl by the Hippodrome",
     "price_range": "$$",
     "tags": [
       "asian_fusion",
@@ -1030,26 +1151,28 @@
       "tea",
       "vegan_options",
       "vegetarian_options",
-      "date_night"
+      "date_night",
+      "asian",
+      "noodles",
+      "fried_rice"
     ],
     "hours": {
-      "mon": "11:00-22:00",
-      "tue": "11:00-22:00",
-      "wed": "11:00-22:00",
-      "thu": "11:00-22:00",
-      "fri": "11:00-22:30",
+      "mon": "11:30-22:00",
+      "tue": "11:30-22:00",
+      "wed": "11:30-22:00",
+      "thu": "11:30-22:00",
+      "fri": "11:30-22:30",
       "sat": "12:00-22:30",
       "sun": "12:00-21:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Liquid+Ginger+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/40. Liquid Ginger.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Liquid+Ginger+101+SE+2nd+Pl+Gainesville+FL",
+    "speed": "sit_down"
   },
   {
     "id": "uf-042",
     "name": "Flaco's Cuban Bakery",
     "zone": "Downtown",
-    "nearest_landmark": "Depot Park",
+    "nearest_landmark": "W University Ave & SW 2nd St",
     "price_range": "$",
     "tags": [
       "cuban",
@@ -1058,7 +1181,12 @@
       "coffee",
       "breakfast",
       "cheap_eats",
-      "vegetarian_options"
+      "vegetarian_options",
+      "pastries",
+      "desserts",
+      "cuban_sandwich",
+      "latin",
+      "cafe"
     ],
     "hours": {
       "mon": "08:00-20:00",
@@ -1069,97 +1197,43 @@
       "sat": "09:00-20:00",
       "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Flaco%27s+Cuban+Bakery+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/41. Flaco's Cuban Bakery.jpg"
-  },
-  {
-    "id": "uf-043",
-    "name": "Saigon Legend",
-    "zone": "Midtown",
-    "nearest_landmark": "1228 W University Ave, across from campus",
-    "price_range": "$$",
-    "tags": [
-      "vietnamese",
-      "pho",
-      "banh_mi",
-      "vegan_options",
-      "vegetarian_options"
-    ],
-    "hours": {
-      "mon": "11:00-21:30",
-      "tue": "11:00-21:30",
-      "wed": "11:00-21:30",
-      "thu": "11:00-21:30",
-      "fri": "11:00-21:30",
-      "sat": "12:00-21:30",
-      "sun": "12:00-21:00"
-    },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Saigon+Legend+1228+W+University+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/42. Saigon Legend.jpg"
-  },
-  {
-    "id": "uf-044",
-    "name": "Cymplify",
-    "zone": "NW Gainesville",
-    "nearest_landmark": "5404 NW 8th Ave (10 min drive)",
-    "price_range": "$",
-    "tags": [
-      "coffee",
-      "cafe",
-      "ice_cream",
-      "dessert",
-      "market",
-      "study_spot",
-      "vegan_options"
-    ],
-    "hours": {
-      "mon": "11:00-20:00",
-      "tue": "11:00-20:00",
-      "wed": "11:00-20:00",
-      "thu": "11:00-20:00",
-      "fri": "11:00-20:00",
-      "sat": "10:00-20:00",
-      "sun": "10:00-15:00"
-    },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Cymplify+5404+NW+8th+Ave+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/43. Cymplify.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Flaco%27s+Cuban+Bakery+200+W+University+Ave+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-045",
     "name": "Daily Green",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SE 2nd St between downtown and Depot Park",
     "price_range": "$$",
     "tags": [
-      "vegan",
-      "plant_based",
-      "cafe",
-      "coffee",
-      "breakfast",
       "healthy",
-      "study_spot"
+      "cafe",
+      "waffles",
+      "vegan_options",
+      "vegetarian_options",
+      "gluten_free_options",
+      "brunch",
+      "breakfast",
+      "coffee"
     ],
     "hours": {
-      "mon": "08:00-16:00",
-      "tue": "08:00-16:00",
-      "wed": "08:00-16:00",
-      "thu": "08:00-16:00",
-      "fri": "08:00-16:00",
-      "sat": "09:00-15:00",
-      "sun": "09:00-15:00"
+      "mon": "closed",
+      "tue": "closed",
+      "wed": "10:00-14:00",
+      "thu": "10:00-14:00",
+      "fri": "10:00-14:00",
+      "sat": "10:00-14:00",
+      "sun": "10:00-14:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Daily+Green+Gainesville+Gainesville+FL",
-    "speed": "quick",
-    "image": "compressedImages/44. Daily Green.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Daily+Green+436+SE+2nd+St+Gainesville+FL",
+    "speed": "quick"
   },
   {
     "id": "uf-046",
     "name": "Volta Coffee, Tea & Chocolate",
     "zone": "Downtown",
-    "nearest_landmark": "Bo Diddley Plaza",
+    "nearest_landmark": "SW 2nd St & SE 1st Ave",
     "price_range": "$",
     "tags": [
       "coffee",
@@ -1167,81 +1241,58 @@
       "chocolate",
       "pastries",
       "study_spot",
-      "vegan_options"
-    ],
-    "hours": {
-      "mon": "07:00-18:00",
-      "tue": "07:00-18:00",
-      "wed": "07:00-18:00",
-      "thu": "07:00-18:00",
-      "fri": "07:00-18:00",
-      "sat": "08:00-18:00",
-      "sun": "08:00-17:00"
-    },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Volta+Coffee+Tea+Chocolate+Gainesville+FL",
-    "speed": "grab_and_go",
-    "image": "compressedImages/45. Volta Coffee.jpg"
-  },
-  {
-    "id": "uf-047",
-    "name": "Civilization",
-    "zone": "NW Gainesville (Duckpond)",
-    "nearest_landmark": "NW 2nd St north of University Ave",
-    "price_range": "$$",
-    "tags": [
-      "eclectic",
-      "global",
-      "brunch",
-      "patio",
       "vegan_options",
-      "vegetarian_options",
-      "gluten_free_options",
-      "parents_visiting"
+      "desserts",
+      "sweets",
+      "cafe",
+      "hot_chocolate"
     ],
     "hours": {
-      "mon": "17:00-21:30",
-      "tue": "17:00-21:30",
-      "wed": "17:00-21:30",
-      "thu": "17:00-21:30",
-      "fri": "17:00-22:00",
-      "sat": "10:00-21:30",
-      "sun": "10:00-14:30"
+      "mon": "08:00-18:00",
+      "tue": "08:00-18:00",
+      "wed": "08:00-18:00",
+      "thu": "08:00-18:00",
+      "fri": "08:00-18:00",
+      "sat": "08:00-18:00",
+      "sun": "08:00-18:00"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Civilization+Restaurant+NW+2nd+St+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/46. Civilization.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Volta+Coffee+Tea+%26+Chocolate+48+SW+2nd+St+Gainesville+FL",
+    "speed": "grab_and_go"
   },
   {
     "id": "uf-048",
     "name": "Mildred's Big City Food",
     "zone": "SW 34th St",
-    "nearest_landmark": "3445 W University Ave (near SW 34th St)",
+    "nearest_landmark": "University Ave & SW 34th St (Westgate)",
     "price_range": "$$$",
     "tags": [
       "fine_dining",
       "new_american",
       "date_night",
       "parents_visiting",
-      "reservations_recommended"
+      "reservations_recommended",
+      "upscale",
+      "wine",
+      "lunch",
+      "dinner"
     ],
     "hours": {
-      "mon": "11:00-21:30",
-      "tue": "11:00-21:30",
-      "wed": "11:00-21:30",
-      "thu": "11:00-21:30",
-      "fri": "11:00-21:30",
-      "sat": "17:00-21:30",
+      "mon": "11:00-21:00",
+      "tue": "11:00-21:00",
+      "wed": "11:00-21:00",
+      "thu": "11:00-21:00",
+      "fri": "11:00-21:00",
+      "sat": "11:00-21:00",
       "sun": "closed"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mildred%27s+Big+City+Food+3445+W+University+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/47. Mildred's Big City Food.jpg"
+    "speed": "sit_down"
   },
   {
     "id": "uf-049",
     "name": "Satchel's Pizza",
     "zone": "NE Gainesville",
-    "nearest_landmark": "1800 NE 23rd Ave (10 min drive)",
+    "nearest_landmark": "NE 23rd Ave near Waldo Rd (~15 min drive)",
     "price_range": "$$",
     "tags": [
       "pizza",
@@ -1253,7 +1304,8 @@
       "family_friendly",
       "parents_visiting",
       "vegetarian_options",
-      "vegan_options"
+      "vegan_options",
+      "bar"
     ],
     "hours": {
       "mon": "closed",
@@ -1265,34 +1317,374 @@
       "sun": "closed"
     },
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Satchel%27s+Pizza+1800+NE+23rd+Ave+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/48. Stachel's Pizza.jpg"
+    "speed": "sit_down"
   },
   {
-    "id": "uf-050",
-    "name": "Southern Charm Kitchen",
-    "zone": "NE Gainesville",
-    "nearest_landmark": "NE 1st St & NE 23rd Ave",
-    "price_range": "$$",
+    "id": "uf-051",
+    "name": "Chick-fil-A (The Standard, Midtown)",
+    "zone": "Midtown",
+    "nearest_landmark": "University Ave & NW 13th St (The Standard)",
+    "price_range": "$",
     "tags": [
-      "southern",
-      "soul_food",
-      "fried_chicken",
-      "brunch",
-      "family_friendly",
-      "parents_visiting"
+      "chicken",
+      "fast_food",
+      "breakfast",
+      "american",
+      "sandwiches",
+      "chicken_tenders",
+      "milkshakes",
+      "desserts",
+      "cheap_eats"
     ],
     "hours": {
-      "mon": "11:00-21:00",
-      "tue": "11:00-21:00",
-      "wed": "11:00-21:00",
-      "thu": "11:00-21:00",
-      "fri": "11:00-21:00",
-      "sat": "10:00-21:00",
-      "sun": "10:00-15:00"
+      "mon": "07:00-22:00",
+      "tue": "07:00-22:00",
+      "wed": "07:00-22:00",
+      "thu": "07:00-22:00",
+      "fri": "07:00-22:00",
+      "sat": "07:00-22:00",
+      "sun": "closed"
     },
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Southern+Charm+Kitchen+Gainesville+FL",
-    "speed": "sit_down",
-    "image": "compressedImages/49. Southern Charm Kitchen.jpg"
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Chick-fil-A+1340+W+University+Ave+Gainesville+FL",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-052",
+    "name": "Kyuramen",
+    "zone": "Downtown",
+    "nearest_landmark": "SE 1st St, ground floor of Hyatt Place Downtown",
+    "price_range": "$$",
+    "tags": [
+      "japanese",
+      "ramen",
+      "noodles",
+      "bubble_tea",
+      "afternoon_break",
+      "asian",
+      "tea",
+      "milk_tea"
+    ],
+    "hours": {
+      "mon": "12:00-21:00",
+      "tue": "12:00-21:00",
+      "wed": "12:00-21:00",
+      "thu": "12:00-21:00",
+      "fri": "12:00-21:45",
+      "sat": "12:00-21:45",
+      "sun": "12:00-21:00"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Kyuramen+212+SE+1st+St+Gainesville+FL",
+    "speed": "sit_down"
+  },
+  {
+    "id": "uf-053",
+    "name": "Starbucks (Library West)",
+    "zone": "Central Campus",
+    "nearest_landmark": "Library West, 1st floor (University Ave side of campus)",
+    "price_range": "$",
+    "tags": [
+      "coffee",
+      "cafe",
+      "lattes",
+      "tea",
+      "pastries",
+      "desserts",
+      "sweets",
+      "breakfast",
+      "snacks",
+      "drinks",
+      "study_spot",
+      "on_campus",
+      "gator_dining"
+    ],
+    "hours": {
+      "mon": "08:00-00:00",
+      "tue": "08:00-00:00",
+      "wed": "08:00-00:00",
+      "thu": "08:00-00:00",
+      "fri": "08:00-21:00",
+      "sat": "10:00-18:00",
+      "sun": "10:00-00:00"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Starbucks+%28Library+West%29&query_place_id=ChIJDYCC-4Kj6IgRVH16Bai3Z0Q",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-054",
+    "name": "Starbucks (Reitz Union)",
+    "zone": "Central Campus",
+    "nearest_landmark": "Reitz Union",
+    "price_range": "$",
+    "tags": [
+      "coffee",
+      "cafe",
+      "lattes",
+      "tea",
+      "pastries",
+      "desserts",
+      "sweets",
+      "breakfast",
+      "snacks",
+      "drinks",
+      "on_campus",
+      "gator_dining"
+    ],
+    "hours": {
+      "mon": "07:00-21:00",
+      "tue": "07:00-21:00",
+      "wed": "07:00-21:00",
+      "thu": "07:00-21:00",
+      "fri": "07:00-21:00",
+      "sat": "09:00-17:00",
+      "sun": "09:00-17:00"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Starbucks+%28Reitz+Union%29&query_place_id=ChIJPUGtVGqj6IgR-24esKMADkI",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-055",
+    "name": "Mi Apa (Reitz Union)",
+    "zone": "Central Campus",
+    "nearest_landmark": "Reitz Union food court",
+    "price_range": "$",
+    "tags": [
+      "latin",
+      "cuban",
+      "bowls",
+      "empanadas",
+      "sandwiches",
+      "cheap_eats",
+      "quick_lunch",
+      "on_campus",
+      "gator_dining"
+    ],
+    "hours": {
+      "mon": "07:00-17:00",
+      "tue": "07:00-17:00",
+      "wed": "07:00-17:00",
+      "thu": "07:00-17:00",
+      "fri": "07:00-17:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Mi+Apa+%28Reitz+Union%29&query_place_id=ChIJP9x-4uyj6IgR8twy_obY2OQ",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-056",
+    "name": "Baba's Pizza (Reitz Union)",
+    "zone": "Central Campus",
+    "nearest_landmark": "Reitz Union, 2nd floor",
+    "price_range": "$",
+    "tags": [
+      "pizza",
+      "by_the_slice",
+      "cheap_eats",
+      "quick_lunch",
+      "on_campus",
+      "gator_dining"
+    ],
+    "hours": {
+      "mon": "10:30-19:00",
+      "tue": "10:30-19:00",
+      "wed": "10:30-19:00",
+      "thu": "10:30-19:00",
+      "fri": "10:30-19:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Baba%27s+Pizza+%28Reitz+Union%29&query_place_id=ChIJrTZTsYej6IgR1XQQm3XJh8k",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-059",
+    "name": "Shake Smart (Reitz Union)",
+    "zone": "Central Campus",
+    "nearest_landmark": "Reitz Union",
+    "price_range": "$",
+    "tags": [
+      "smoothies",
+      "yogurt_bowls",
+      "acai",
+      "healthy",
+      "drinks",
+      "snacks",
+      "on_campus",
+      "gator_dining"
+    ],
+    "hours": {
+      "mon": "09:00-17:00",
+      "tue": "09:00-17:00",
+      "wed": "09:00-17:00",
+      "thu": "09:00-17:00",
+      "fri": "09:00-17:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Shake+Smart+%28Reitz+Union%29&query_place_id=ChIJ04FLGUWj6IgRg_QYgHJ_AMQ",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-063",
+    "name": "The Market @ The Hub (Hub Pod Market)",
+    "zone": "Central Campus",
+    "nearest_landmark": "The Hub (Stadium Rd)",
+    "price_range": "$",
+    "tags": [
+      "convenience",
+      "snacks",
+      "drinks",
+      "grab_and_go_meals",
+      "on_campus",
+      "gator_dining"
+    ],
+    "hours": {
+      "mon": "07:00-19:00",
+      "tue": "07:00-19:00",
+      "wed": "07:00-19:00",
+      "thu": "07:00-19:00",
+      "fri": "07:00-18:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The+Market+%40+The+Hub&query_place_id=ChIJpb_K4nej6IgR78NYyc11vl8",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-064",
+    "name": "Opus Coffee (Norman Hall)",
+    "zone": "East Campus",
+    "nearest_landmark": "Norman Hall, 1221 SW 5th Ave",
+    "price_range": "$",
+    "tags": [
+      "coffee",
+      "cafe",
+      "lattes",
+      "tea",
+      "pastries",
+      "study_spot",
+      "on_campus"
+    ],
+    "hours": {
+      "mon": "07:30-16:00",
+      "tue": "07:30-16:00",
+      "wed": "07:30-16:00",
+      "thu": "07:30-16:00",
+      "fri": "07:30-16:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Opus+Coffee+%28Norman+Hall%29&query_place_id=ChIJu0BAuVij6IgR8FxS9dukHH4",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-065",
+    "name": "Einstein Bros. Bagels (UF Health Shands)",
+    "zone": "South Campus",
+    "nearest_landmark": "UF Health Shands Hospital (Archer Rd side of campus)",
+    "price_range": "$",
+    "tags": [
+      "bagels",
+      "breakfast",
+      "coffee",
+      "sandwiches",
+      "cafe",
+      "on_campus"
+    ],
+    "hours": {
+      "mon": "07:00-14:00",
+      "tue": "07:00-14:00",
+      "wed": "07:00-14:00",
+      "thu": "07:00-14:00",
+      "fri": "07:00-14:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Einstein+Bros.+Bagels+%28Levin+College+of+Law%29&query_place_id=ChIJidCpQp6j6IgRAdr1q-Sz6xY",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-066",
+    "name": "Starbucks (UF Health Shands)",
+    "zone": "South Campus",
+    "nearest_landmark": "UF Health Shands Hospital (Archer Rd side of campus)",
+    "price_range": "$",
+    "tags": [
+      "coffee",
+      "cafe",
+      "lattes",
+      "tea",
+      "pastries",
+      "breakfast",
+      "snacks",
+      "drinks"
+    ],
+    "hours": {
+      "mon": "07:30-17:00",
+      "tue": "07:30-17:00",
+      "wed": "07:30-17:00",
+      "thu": "07:30-17:00",
+      "fri": "07:30-17:00",
+      "sat": "closed",
+      "sun": "closed"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Starbucks+%28UF+Health+Shands%29&query_place_id=ChIJQZKgh3aj6IgRhnFNJ6s3Qck",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-067",
+    "name": "Dunkin' (University Ave)",
+    "zone": "Midtown",
+    "nearest_landmark": "University Ave & NW 14th St",
+    "price_range": "$",
+    "tags": [
+      "coffee",
+      "donuts",
+      "breakfast",
+      "sweets",
+      "desserts",
+      "bagels",
+      "drinks",
+      "cheap_eats"
+    ],
+    "hours": {
+      "mon": "06:00-21:00",
+      "tue": "06:00-21:00",
+      "wed": "06:00-21:00",
+      "thu": "06:00-21:00",
+      "fri": "06:00-21:00",
+      "sat": "06:00-21:00",
+      "sun": "06:00-21:00"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Dunkin%27+%28University+Ave%29&query_place_id=ChIJYWi5l4Oj6IgRtQAxCU1Bsb4",
+    "speed": "grab_and_go"
+  },
+  {
+    "id": "uf-068",
+    "name": "HASS Kitchen",
+    "zone": "Midtown",
+    "nearest_landmark": "University Ave between NW 12th & 13th St",
+    "price_range": "$$",
+    "tags": [
+      "brunch",
+      "breakfast",
+      "avocado",
+      "healthy",
+      "cafe",
+      "coffee",
+      "vegetarian_options",
+      "locally_sourced"
+    ],
+    "hours": {
+      "mon": "09:00-15:30",
+      "tue": "closed",
+      "wed": "09:00-15:30",
+      "thu": "09:00-15:30",
+      "fri": "09:00-16:00",
+      "sat": "09:00-16:00",
+      "sun": "09:00-16:00"
+    },
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=HASS+Kitchen&query_place_id=ChIJ00cFqV6j6IgRtfnLEEOJdKU",
+    "speed": "sit_down"
   }
 ]

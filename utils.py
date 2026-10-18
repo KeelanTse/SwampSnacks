@@ -92,12 +92,18 @@ def ask_gemini(contents: str, system_instruction: str, models=None, **config):
             )
             print(f"[SwampSnacks] {model} answered in {time.perf_counter() - start:.1f}s")
             return response
-        except RuntimeError:  # missing API key: switching models won't help
+        except RuntimeError:
             raise
         except Exception as e:
             print(f"[SwampSnacks] {model} failed after {time.perf_counter() - start:.1f}s: {e!r}")
             last_error = e
     raise last_error
+
+
+def open_rank(spot: dict, now: datetime) -> int:
+    """Sort key: open spots first, then spots with unknown hours, then closed ones."""
+    is_open = open_status(spot, now)[0]
+    return 0 if is_open else (1 if is_open is None else 2)
 
 
 def spots_for_prompt(spots: list, now: datetime) -> str:
@@ -145,13 +151,15 @@ def open_status(spot: dict, now: datetime | None = None) -> tuple[bool, str]:
     Friday's hours are the ones that count.
     """
     now = now or now_at_uf()
+    if spot["hours"].get(DAYS[now.weekday()]) == "unknown":
+        return None, "Hours not listed · check before going"
     t = now.hour * 60 + now.minute
     today = DAYS[now.weekday()]
     yesterday = DAYS[(now.weekday() - 1) % 7]
 
     # 1) Still open from last night's late shift?
     prev = spot["hours"].get(yesterday, "closed")
-    if prev != "closed":
+    if prev not in ("closed", "unknown"):
         start, end = prev.split("-")
         if _minutes(end) <= _minutes(start) and t < _minutes(end):
             return True, f"Open now · until {pretty_time(end)}"
@@ -365,8 +373,8 @@ def _keyword_fallback(query: str, spots: list, now: datetime) -> list:
         text = " ".join([s["name"], s["zone"], s["nearest_landmark"], *s["tags"]]).lower()
         return sum(w in text for w in words)
 
-    open_spots = [s for s in spots if open_status(s, now)[0]] or spots
-    top = sorted(open_spots, key=score, reverse=True)[:5]
+    top = sorted(spots, key=score, reverse=True)[:5]
+    top.sort(key=lambda s: open_rank(s, now))  # open, then unknown hours, then closed
     return [{**s, "reasons": _rule_reasons(s, words, now)} for s in top]
 
 
@@ -390,8 +398,13 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
     user locations (like "Turlington", "Lib West", etc.) to the nearest landmarks in our database
     (like "Plaza of the Americas", "The Hub", "Marston", or "Midtown").
 
-    TIME RULE: Only pick spots where open_now is true, unless the user explicitly asks about a
-    different time. Use the time of day too (breakfast spots in the morning, late_night spots late).
+    TIME RULE: open_now null means hours are unknown; treat those as possibly open. Being closed does NOT disqualify a spot. Always include every strong match for what
+    the user asked (cuisine, food type, location), open or closed. The app shows closed spots at the
+    bottom with a red dot. Use the time of day too (breakfast in the morning, late_night spots late).
+
+    MATCHING: Match by meaning, not exact words. "Chinese" matches chinese; "coffee" matches coffee,
+    cafe, lattes; "dessert"/"sweet" matches desserts, sweets, ice_cream, pastries, milkshakes;
+    "cheap"/"broke" matches "$" and cheap_eats. Location matters: a spot near the user beats a far one.
 
     BUDGET/SPEED: "$" is cheapest. If the user is short on time, prefer grab_and_go or quick.
 
@@ -425,6 +438,8 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
         # Copy each spot (so the cached database isn't modified) and attach Gemini's reasons.
         # Keeps Gemini's ranking order.
         matched = [{**by_id[p.id], "reasons": p.reasons} for p in picks if p.id in by_id]
+        # Open spots first, closed ones at the bottom (Python's sort is stable, so Gemini's order is kept within each group)
+        matched.sort(key=lambda s: open_rank(s, now))
         if matched:
             return matched, None
         return _keyword_fallback(query, spots, now), "Gemini didn't find a match, so these are the closest keyword matches."
@@ -432,4 +447,3 @@ def get_recommendations(query: str, spots: list, models=None) -> tuple[list, str
     except Exception as e:
         print(f"[SwampSnacks] Gemini error: {e!r}")  # full details in your terminal
         return _keyword_fallback(query, spots, now), f"AI is unavailable right now ({e}). Showing keyword matches instead."
-
